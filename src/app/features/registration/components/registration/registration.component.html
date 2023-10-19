@@ -1,0 +1,47 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+ <div class="container">
+    <div class="left">
+        <h1>Welcome to Stutor</h1>
+    <p>Get started - it's free.</p>
+    <form [formGroup]="registerForm" class="register-form" (submit)="registration()">
+        <h2>Register</h2>
+
+        <div class="form-group">
+            <label>E-mail:</label>
+            <input formControlName="email" type="email">
+        </div>
+
+
+        <div class="form-group">
+            <label>Nickname:</label>
+            <input formControlName="nickname">
+        </div>
+        
+        <div class="form-group">
+            <label>Password:</label>
+            <input formControlName="password" type="password">
+        </div>
+        
+        <div class="form-group">
+            <label>Confirm Password:</label>
+            <input formControlName="confirmpassword" type="password">
+        </div>
+        
+       
+    
+        <div class="agreement">
+            <input type="checkbox" formControlName="agreement">
+            <p>I have read the agreement</p>
+        </div>
+        
+        <button type="submit" [disabled]="!registerForm.valid">
+            Register
+        </button>
+    </form>
+    </div>
+    
+    <img src="../../../../../assets/registration-assests/registerpage.avif" alt="register-img">
+ </div>
+    

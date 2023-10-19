@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+  }
+  
+  a, button {
+    cursor: pointer;
+  }
+  
+  header {
+    padding-left: 6%;
+    padding-right: 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #00E0FF;
+  
+    > div:first-of-type {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+  
+      > div {
+        display: flex;
+        justify-content: space-between;
+        color: #E8FFE8;
+        gap: 30px;
+        font-size: 1.2em;
+        font-weight: bold;
+      }
+    }
+  
+    > div > img {
+      height: 90px;
+      width: 90px;
+    }
+  
+    > div > button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding-left: 1em;
+      padding-right: 1em;
+      height: 40px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      font-weight: 500;
+      color: #000;
+      background-color: #fff;
+      border: none;
+      border-radius: 45px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease 0s;
+      cursor: pointer;
+      outline: none;
+  
+      &:hover {
+        background-color: #fcf636;
+        box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+        color: black;
+        transform: translateY(-7px);
+      }
+  
+      &:active {
+        transform: translateY(-1px);
+      }
+    }
+  
+    > div:nth-of-type(2) {
+      display: flex;
+      gap: 30px;
+  
+      > button > svg {
+        height: 40%;
+      }
+  
+      > span {
+        padding-top: 11px;
+      }
+    }
+  
+    > div > form > button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding-left: 1em;
+      padding-right: 1em;
+      height: 40px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      font-weight: 500;
+      color: #000;
+      background-color: #fff;
+      border: none;
+      border-radius: 45px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease 0s;
+      cursor: pointer;
+      outline: none;
+  
+      &:hover {
+        background-color: #fcf636;
+        box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+        color: black;
+        transform: translateY(-7px);
+      }
+  
+      &:active {
+        transform: translateY(-1px);
+      }
+    }
+  
+    > div:first-of-type > div a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+  
