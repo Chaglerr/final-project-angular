@@ -10,7 +10,7 @@ export class AuthorizationService {
   constructor() { }
 
   private liveDataSubject = new BehaviorSubject<data>({
-    users: [{email: "g@gmail.com", password:"paroli11", nickname: "gio", id: "u1", posts: []}], currentUserId: "-1"
+    users: [{email: "g@gmail.com", password:"paroli11", nickname: "gio", id: "u0", posts: []}], currentUserId: "-1"
   });
 
   public currentState = this.liveDataSubject.asObservable();
@@ -61,5 +61,14 @@ export class AuthorizationService {
     const previousData = this.liveDataSubject.getValue();
     previousData.currentUserId = "-1";
     this.liveDataSubject.next(previousData);
+  }
+
+  public getUser(id: string){
+    const data = this.liveDataSubject.getValue();
+    for(let i = 0; i < data.users.length; i++){
+      if(data.users[i].id === id) return data.users[i];
+    }
+    let dummyUser = {id: "-1", email: "", nickname: "", password: "", posts: []};
+    return dummyUser;
   }
 }
