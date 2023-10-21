@@ -51,9 +51,7 @@ export class HomePageComponent {
     if(newPost === "") return;
     this.loggedInUser.posts.push(newPost);
     this.allPosts.push(newPost);
-  
     this.detailedInfoForm.reset(this.defaultFormValues);
-    //console.log(newPost);
   }
 
   private generatePost(): string{ 

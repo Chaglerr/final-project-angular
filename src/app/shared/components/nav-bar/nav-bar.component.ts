@@ -51,6 +51,10 @@ export class NavBarComponent{
     this.router.navigate(['/homepage']);
   }
 
+  public redirectToChat(): void{
+    this.router.navigate(['/chat']);
+  }
+
   public logOut(): void{
     this.userControl.logOut();
     this.userControl.currUserId = "-1";

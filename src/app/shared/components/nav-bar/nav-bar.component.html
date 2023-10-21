@@ -21,7 +21,7 @@
 
         <!-- <button *ngIf="this.loggedIn">Search</button> -->
 
-        <button *ngIf="this.loggedIn">Chat</button>
+        <button *ngIf="this.loggedIn" (click) = 'redirectToChat()'>Chat</button>
 
         <button *ngIf="this.loggedIn">My Profile</button>
 

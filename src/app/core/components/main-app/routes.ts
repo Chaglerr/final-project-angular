@@ -20,5 +20,8 @@ export const ROUTES: Routes = [
         path: 'homepage',
         loadComponent: ()=> import('../../../features/home-page/components/home-page/home-page.component').then(m => m.HomePageComponent),
     },
-   
+    {
+        path: 'chat',
+        loadComponent: ()=> import('../../../features/chat/components/chat/chat.component').then(m => m.ChatComponent),
+    },
 ];
