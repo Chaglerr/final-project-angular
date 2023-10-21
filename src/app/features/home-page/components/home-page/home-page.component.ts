@@ -25,6 +25,7 @@ export class HomePageComponent {
   });
 
   allPosts: string[] = [];
+  postsGeneric: posts[] = [];
   loggedInId: string = "";
   loggedInUser: IUser = {id: "-1", email: "", nickname: "", password: "", posts: []};
   
@@ -49,6 +50,10 @@ export class HomePageComponent {
   public postInfo(){
     let newPost = this.generatePost();
     if(newPost === "") return;
+    const data = this.detailedInfoForm.value;
+    const genericNewPost = {academicState: data.academicState || "", subjectSelect: data.subjectSelect || "", availabilitySelect: data.availabilitySelect || "",
+                          locationSelect: data.locationSelect || "", languageSelect: data.languageSelect || "", priceSelect: data.priceSelect || "", description: data.description || "" }
+    this.postsGeneric.push(genericNewPost);
     this.loggedInUser.posts.push(newPost);
     this.allPosts.push(newPost);
     this.detailedInfoForm.reset(this.defaultFormValues);
@@ -65,5 +70,20 @@ export class HomePageComponent {
     return res;
   }
 
- 
+  public detailedSearch() {
+    const searchData = this.detailedInfoForm.value;
+    const filteredPosts = this.postsGeneric.filter((post) => {
+      return (
+        (!searchData.academicState || post.academicState === searchData.academicState) &&
+        (!searchData.subjectSelect || post.subjectSelect === searchData.subjectSelect) &&
+        (!searchData.availabilitySelect || post.availabilitySelect === searchData.availabilitySelect) &&
+        (!searchData.locationSelect || post.locationSelect === searchData.locationSelect) &&
+        (!searchData.languageSelect || post.languageSelect === searchData.languageSelect) &&
+        (!searchData.priceSelect || post.priceSelect === searchData.priceSelect) &&
+        (!searchData.description || post.description.includes(searchData.description))
+      );
+    });
+    //use data, works good :)
+    console.log(filteredPosts);
+  }
 }

@@ -15,11 +15,11 @@ export interface data{
 }
 
 export interface posts{
-    levelSelect: '',
-    subjectSelect: '',
-    availabilitySelect: '',
-    locationSelect: '',
-    languageSelect: '',
-    priceSelect: '',
-    description: '',
+    academicState: string,
+    subjectSelect: string,
+    availabilitySelect: string,
+    locationSelect: string,
+    languageSelect: string,
+    priceSelect: string,
+    description: string,
 }
