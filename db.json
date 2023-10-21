@@ -1,0 +1,22 @@
+{
+  "posts": [
+    {
+      "academicState": "",
+      "subjectSelect": "",
+      "availabilitySelect": "",
+      "locationSelect": "",
+      "languageSelect": "",
+      "priceSelect": "",
+      "description": ""
+    }
+  ],
+  "users":[
+    {
+      "id": "u0",
+      "email": "g@gmail.com",
+      "nickname": "gio",
+      "password": "paroli11",
+      "userPosts": []
+    }
+  ]
+}

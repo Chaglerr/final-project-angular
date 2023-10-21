@@ -35,9 +35,13 @@ export class AuthorizationService {
 
 
    
-  public registerUser(user: User): void{
+  public registerUser(user: User): void {
     const data = this.liveDataSubject.getValue();
-    data.users.push({...user, id: this.nextId, posts: []});
+    data.users.push({
+      ...user, 
+      id: this.nextId,
+      posts: []
+    });
     this.changeId(this.nextId);
     this.liveDataSubject.next(data);
     this.printdata();
@@ -47,7 +51,6 @@ export class AuthorizationService {
     const data = this.liveDataSubject.getValue();
     for(let i = 0; i < data.users.length; i++){
       console.log(data.users[i]);
-      
     }
   }
 
