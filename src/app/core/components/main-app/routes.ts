@@ -29,4 +29,9 @@ export const ROUTES: Routes = [
         canActivate: [loggedIn],
         loadComponent: ()=> import('../../../features/chat/components/chat/chat.component').then(m => m.ChatComponent),
     },
+    {
+        path: 'myprofile',
+        canActivate: [loggedIn],
+        loadComponent: ()=> import('../../../features/my-profile/components/my-profile/my-profile.component').then(m => m.MyProfileComponent),
+    },
 ];
