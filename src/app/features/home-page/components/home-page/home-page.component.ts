@@ -24,7 +24,7 @@ export class HomePageComponent {
     description: [''],
   });
 
-  allPosts: posts[] = [];
+  allPosts: string[] = [];
   loggedInId: string = "";
   loggedInUser: IUser = {id: "-1", email: "", nickname: "", password: "", posts: []};
   
@@ -37,9 +37,9 @@ export class HomePageComponent {
 
   public postInfo(){
     let newPost = this.generatePost();
+    this.loggedInUser.posts.push(newPost);
+    this.allPosts.push(newPost);
     console.log(newPost);
-    
-    
   }
 
   private generatePost(): string{
@@ -56,31 +56,3 @@ export class HomePageComponent {
 
  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//  TO DELETE
-// constructor(private userControl: AuthorizationService){};
-//     loggedInId: string = "";
-//     loggedInUser: IUser = {id: "-1", email: "", nickname: "", password: "", posts: []};
-
-//     ngOnInit(){
-//       this.loggedInId = this.userControl.currUserId;
-//       this.loggedInUser = this.userControl.getUser(this.loggedInId);
-//     }
