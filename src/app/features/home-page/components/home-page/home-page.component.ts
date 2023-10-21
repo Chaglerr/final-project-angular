@@ -56,15 +56,12 @@ export class HomePageComponent {
     //console.log(newPost);
   }
 
-  private generatePost(): string{
+  private generatePost(): string{ 
     const data = this.detailedInfoForm.value;
+    if(!data.academicState || !data.availabilitySelect || !data.priceSelect || !data.subjectSelect || !data.locationSelect || !data.languageSelect) return "";
     let res = `Hello, my name is ${this.loggedInUser.nickname}, `;
     if(data.academicState === 'teach') res += `I'm here to help you with ${data.subjectSelect}. `;
     else if(data.academicState === 'learn') res += `I'm here to find someone who can help me with ${data.subjectSelect}. `;
-    else return "";
-    if(!data.availabilitySelect || !data.priceSelect || !data.subjectSelect || !data.locationSelect || !data.languageSelect) return "";
-    
-    if(data.availabilitySelect === 'Select Availability') return "";
     res += `My prefered time during the week is ${data.availabilitySelect}, as of the place of lessons, I would prefer ${data.locationSelect} and prefered language would be ${data.languageSelect}. For me acceptable price per lesson would be around ${data.priceSelect}. \n`
     if(data.description !== "") res += `Some additional information about me: ${data.description}`;
     return res;
