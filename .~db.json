@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "id": "post1",
+      "content": "This is the content of the first post."
+    }
+  ],
+  "users": [
+    {
+      "email": "g@gmail.com",
+      "password": "paroli66",
+      "confirmpassword": "paroli66",
+      "nickname": "paroli66",
+      "agreement": true,
+      "id": "25320aae-cc5a-44c7-aeea-393236f227f8",
+      "posts": []
+    },
+    {
+      "email": "j@j.com",
+      "password": "paroli00",
+      "confirmpassword": "paroli00",
+      "nickname": "jj",
+      "agreement": true,
+      "id": "1496f731-b2ef-4695-a06e-b79d35727674",
+      "posts": []
+    }
+  ]
+}

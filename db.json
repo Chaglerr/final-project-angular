@@ -1,23 +1,11 @@
 {
   "posts": [
     {
-      "academicState": "",
-      "subjectSelect": "",
-      "availabilitySelect": "",
-      "locationSelect": "",
-      "languageSelect": "",
-      "priceSelect": "",
-      "description": ""
+      "id": "post1",
+      "content": "This is the content of the first post."
     }
   ],
   "users": [
-    {
-      "id": "u0",
-      "email": "g@gmail.com",
-      "nickname": "gio",
-      "password": "paroli11",
-      "userPosts": []
-    },
     {
       "email": "gio@gmail.com",
       "password": "paroli44",
@@ -33,6 +21,22 @@
       "nickname": "paroli66",
       "agreement": true,
       "id": "25320aae-cc5a-44c7-aeea-393236f227f8"
+    },
+    {
+      "email": "g@g.com",
+      "password": "paroli55",
+      "confirmpassword": "paroli55",
+      "nickname": "g",
+      "agreement": true,
+      "id": "1e111614-0b6e-4986-899d-fd1d162036ad"
+    },
+    {
+      "email": "h@h.com",
+      "password": "paroli77",
+      "confirmpassword": "paroli77",
+      "nickname": "hh",
+      "agreement": true,
+      "id": "ab9d8eb9-44c0-4dcf-bb75-bd6858188069"
     }
   ]
 }

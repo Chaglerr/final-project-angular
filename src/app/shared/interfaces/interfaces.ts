@@ -23,3 +23,8 @@ export interface posts{
     priceSelect: string,
     description: string,
 }
+
+export interface IPost{
+    id: string,
+    content: string,
+}

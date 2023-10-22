@@ -16,7 +16,7 @@ export class AuthorizationService {
 
   public currentState = this.liveDataSubject.asObservable();
   public currUserId = "-1";
-  public nextId = "u1";
+  private nextId = "";
 
   public async validLoginData(email: string, password: string): Promise<boolean> {
     try {
@@ -43,11 +43,13 @@ export class AuthorizationService {
    
   public registerUser(user: User): void {
     const data = this.liveDataSubject.getValue();
+    this.nextId = `${crypto.randomUUID()}`;
     data.users.push({
-      ...user, 
+      ...user,
+      posts: [], 
       id: this.nextId,
     });
-    this.http.addUser({...user, id: `${crypto.randomUUID()}`})
+    this.http.addUser({...user, id: this.nextId, posts: []})
     .subscribe(
     (response) => {
       console.log('Successfully created a new record:', response);
@@ -66,8 +68,6 @@ export class AuthorizationService {
       console.log(data.users[i]);
     }
   }
-
-  
 
   public logOut(): void{
     const previousData = this.liveDataSubject.getValue();

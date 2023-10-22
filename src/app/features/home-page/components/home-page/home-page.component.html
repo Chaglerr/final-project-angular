@@ -78,9 +78,9 @@
           <div class="posts">
             <p>Posts:</p>
             <div class="post-container">
-              <ng-container *ngFor="let post of allPosts; let i = index">
+              <ng-container *ngFor="let post of displayedPosts; let i = index">
                 <div class="single-post" *ngIf="i % 2 === 0">
-                  {{ allPosts[i] }}
+                  {{ displayedPosts[i] }}
                   <button class="chat-button">
                         <div class="svg-wrapper-1">
                             <div class="svg-wrapper">
@@ -94,7 +94,7 @@
                         </button>
                 </div>
                 <div class="single-post" *ngIf="i % 2 === 1">
-                  {{ allPosts[i] }}
+                  {{ displayedPosts[i] }}
                   <button class="chat-button">
                         <div class="svg-wrapper-1">
                             <div class="svg-wrapper">

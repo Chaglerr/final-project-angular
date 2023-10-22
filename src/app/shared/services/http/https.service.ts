@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IUser } from '../../interfaces/interfaces';
+import { IPost, IUser } from '../../interfaces/interfaces';
 import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
@@ -27,4 +27,30 @@ export class HttpsService {
     const fullUrl = this.baseUrl + endpoint;
     return this.http.get<IUser[]>(fullUrl);
   }
+
+  public getUserById(id: string): Observable<IUser> {
+    const endpoint = `/users/${id}`;
+    const url = this.baseUrl + endpoint;
+    return this.http.get<IUser>(url);
+  }
+
+  public getPosts(): Observable<IPost[]>{
+    const endpoint = '/posts';
+    const fullUrl = this.baseUrl + endpoint;
+    return this.http.get<IPost[]>(fullUrl);
+  }
+
+
+  public savePostsToServer(postToAdd: IPost) {
+    const endpoint = '/posts';
+    const fullUrl = this.baseUrl + endpoint;
+    return this.http.post(fullUrl, postToAdd).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error creating a new record:', error);
+        return throwError('Failed to create a new record. Status: ' + error.status + ', Error Message: ' + error.message);
+      })
+    );
+  }
+
+  
 }

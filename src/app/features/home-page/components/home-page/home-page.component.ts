@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { customPassValidator } from 'src/app/shared/validators/validators';
-import { IUser, posts } from 'src/app/shared/interfaces/interfaces';
+import { IPost, IUser, posts } from 'src/app/shared/interfaces/interfaces';
 import { AuthorizationService } from 'src/app/shared/services/authorization-services/authorization.service';
+import { HttpsService } from 'src/app/shared/services/http/https.service';
+import { PostsService } from '../../services/posts-services/posts.service';
 @Component({
   selector: 'app-home-page',
   standalone: true,
@@ -12,7 +14,7 @@ import { AuthorizationService } from 'src/app/shared/services/authorization-serv
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent {
-  constructor(public formBuilder: FormBuilder, public userControl: AuthorizationService){};
+  constructor(public formBuilder: FormBuilder, public userControl: AuthorizationService, private http: HttpsService, private postsService: PostsService){};
 
   public detailedInfoForm = this.formBuilder.group({
     academicState: ['', Validators.required],
@@ -24,20 +26,29 @@ export class HomePageComponent {
     description: [''],
   });
 
-  allPosts: string[] = [];
+  displayedPosts: string[] = [];
   postsGeneric: posts[] = [];
   loggedInId: string = "";
   loggedInUser: IUser = {id: "-1", email: "", nickname: "", password: "", posts: []};
   
 
-  ngOnInit(){
+  ngOnInit() {
     this.loggedInId = this.userControl.currUserId;
-    this.loggedInUser = this.userControl.getUser(this.loggedInId);
-    //posts = getAllPosts()
+
+    // Load posts from the HTTP service
+    this.http.getPosts().subscribe(
+      (posts: IPost[]) => {
+        this.postsService.posts = posts;
+        this.displayedPosts = this.postsService.getPostsToDisplay();
+      },
+      (error) => {
+        console.error('Error while getting posts:', error);
+      }
+    );
   }
 
 
-  defaultFormValues = {
+  private readonly defaultFormValues = {
     academicState: '', 
     subjectSelect: '',
     availabilitySelect: '',
@@ -55,7 +66,7 @@ export class HomePageComponent {
                           locationSelect: data.locationSelect || "", languageSelect: data.languageSelect || "", priceSelect: data.priceSelect || "", description: data.description || "" }
     this.postsGeneric.push(genericNewPost);
     this.loggedInUser.posts.push(newPost);
-    this.allPosts.push(newPost);
+    this.displayedPosts.push(newPost);
     this.detailedInfoForm.reset(this.defaultFormValues);
   }
 
