@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IPost, IUser } from '../../interfaces/interfaces';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, mergeMap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -52,5 +52,17 @@ export class HttpsService {
     );
   }
 
-  
+  public updateUserPosts(id: string, iuser: IUser) {
+    const endpoint = `/users/${id}`;
+    const fullurl = this.baseUrl + endpoint;
+
+    this.http.patch(fullurl, iuser).subscribe(
+      (response) => {
+        console.log(`Successfully patched user with ID ${id}:, response`);
+      },
+      (error) => {
+        console.error(`Error patching user with ID ${id}:, error`);
+      }
+    );
+  }
 }

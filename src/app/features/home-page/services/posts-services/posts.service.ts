@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { IPost } from 'src/app/shared/interfaces/interfaces';
+import { IPost, IUser } from 'src/app/shared/interfaces/interfaces';
 import { HttpsService } from 'src/app/shared/services/http/https.service';
 
 @Injectable({
@@ -26,10 +26,9 @@ export class PostsService {
       id: `${crypto.randomUUID()}`,
       content: content
     };
-    console.log('Posting data:', post); // Add this line for debugging
+    console.log('Posting data:', post); 
     this.http.savePostsToServer(post).subscribe(
       (response) => {
-        // Handle the response from the server, if needed
         console.log('Post response:', response);
       },
       (error) => {
@@ -38,15 +37,18 @@ export class PostsService {
     );
     this.posts.push(post);
   }
+
+  updatePostsOfUser(user: IUser){
+    const id = user.id;
+    this.http.updateUserPosts(id, user);
+  }
+
   
 
   getPostsToDisplay(): string[] {
     let res = [];
     for(let i = 0; i < this.posts.length; i++){
       res.push(this.posts[i].content);
-      console.log(this.posts[i].content);
-      console.log(1);
-      
     }
     return res;
   }

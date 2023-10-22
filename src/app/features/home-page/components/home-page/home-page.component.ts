@@ -76,14 +76,17 @@ export class HomePageComponent {
   public postInfo(){
     let newPost = this.generatePost();
     if(newPost === "") return;
-    // const data = this.detailedInfoForm.value;
-    // const genericNewPost = {academicState: data.academicState || "", subjectSelect: data.subjectSelect || "", availabilitySelect: data.availabilitySelect || "",
-    //                       locationSelect: data.locationSelect || "", languageSelect: data.languageSelect || "", priceSelect: data.priceSelect || "", description: data.description || "" }
-    // this.postsGeneric.push(genericNewPost);
     this.postsService.addPost(newPost);
-    this.loggedInUser.posts.push(newPost);
+    const arr = this.loggedInUser.posts;
+    arr.push(newPost);
+    const updated = this.loggedInUser;
+    updated.posts = arr;
+    console.log(updated);
+    
+    this.postsService.updatePostsOfUser(updated);
     this.displayedPosts.push(newPost);
     this.detailedInfoForm.reset(this.defaultFormValues);
+    console.log(`giovar ${this.loggedInUser.posts}`)
   }
 
   private generatePost(): string{ 
