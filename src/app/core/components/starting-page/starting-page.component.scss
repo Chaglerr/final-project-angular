@@ -130,3 +130,38 @@
     }
   }
   
+  .footer {
+    background-color: #242424;
+    color: #fff;
+    padding: 20px 0;
+    
+    p{
+      text-decoration: none;
+      color: #ccc;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+      .footer-logo {
+        img {
+          width: 100px;
+        }
+      }
+      
+      .footer-links {
+        a {
+          text-decoration: none;
+          color: #ccc;
+          margin: 0 10px;
+          
+          &:hover {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
