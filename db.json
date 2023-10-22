@@ -3,6 +3,14 @@
     {
       "id": "2288dd4f-82e3-4169-be9d-93a607bc92ad",
       "content": "Hello, my name is giogio, I'm here to help you with math. My prefered time during the week is weekdays, as of the place of lessons, I would prefer online and prefered language would be English. For me acceptable price per lesson would be around 0-20. \nSome additional information about me: gio"
+    },
+    {
+      "id": "a2bcead7-ef45-4e85-af8e-9b7dfcc54ea4",
+      "content": "Hello, my name is giogio, I'm here to help you with calculus. My prefered time during the week is weekdays, as of the place of lessons, I would prefer city1 and prefered language would be English. For me acceptable price per lesson would be around 20-40. \nSome additional information about me: magarivar"
+    },
+    {
+      "id": "c6728baf-ecb5-4cf8-bdfc-1eefe3faf4cb",
+      "content": "Hello, my name is giogio, I'm here to help you with calculus. My prefered time during the week is weekdays, as of the place of lessons, I would prefer city1 and prefered language would be English. For me acceptable price per lesson would be around 0-20. \nSome additional information about me: lukavar"
     }
   ],
   "users": [
@@ -23,7 +31,9 @@
       "agreement": true,
       "id": "d318a90c-d4d9-4e68-9b3f-076eb452ff7e",
       "posts": [
-        "Hello, my name is giogio, I'm here to help you with math. My prefered time during the week is weekdays, as of the place of lessons, I would prefer online and prefered language would be English. For me acceptable price per lesson would be around 0-20. \nSome additional information about me: gio"
+        "Hello, my name is giogio, I'm here to help you with math. My prefered time during the week is weekdays, as of the place of lessons, I would prefer online and prefered language would be English. For me acceptable price per lesson would be around 0-20. \nSome additional information about me: gio",
+        "Hello, my name is giogio, I'm here to help you with calculus. My prefered time during the week is weekdays, as of the place of lessons, I would prefer city1 and prefered language would be English. For me acceptable price per lesson would be around 20-40. \nSome additional information about me: magarivar",
+        "Hello, my name is giogio, I'm here to help you with calculus. My prefered time during the week is weekdays, as of the place of lessons, I would prefer city1 and prefered language would be English. For me acceptable price per lesson would be around 0-20. \nSome additional information about me: lukavar"
       ]
     }
   ]
