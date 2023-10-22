@@ -10,13 +10,29 @@
       "description": ""
     }
   ],
-  "users":[
+  "users": [
     {
       "id": "u0",
       "email": "g@gmail.com",
       "nickname": "gio",
       "password": "paroli11",
       "userPosts": []
+    },
+    {
+      "email": "gio@gmail.com",
+      "password": "paroli44",
+      "confirmpassword": "paroli44",
+      "nickname": "askjn",
+      "agreement": true,
+      "id": "u1"
+    },
+    {
+      "email": "g@gmail.com",
+      "password": "paroli66",
+      "confirmpassword": "paroli66",
+      "nickname": "paroli66",
+      "agreement": true,
+      "id": "25320aae-cc5a-44c7-aeea-393236f227f8"
     }
   ]
 }

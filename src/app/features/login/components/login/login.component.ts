@@ -21,17 +21,23 @@ export class LoginComponent {
   });
 
 
-  login(): void{
+  async login(): Promise<void> {
     const password = this.loginForm.get('password')?.value;
     const email = this.loginForm.get('email')?.value;
-    let res = false;
-    
-    if(email && password) res = this.userControl.validLoginData(email, password);
-    if(res){
-      console.log(this.userControl.currUserId); 
-      this.router.navigate(['']);
+  
+    if (email && password) {
+      const res = await this.userControl.validLoginData(email, password);
+  
+      if (res) {
+        console.log(this.userControl.currUserId);
+        this.router.navigate(['']);
+      } else {
+        console.log('Login failed'); // Handle login failure
+      }
+  
+      this.loginForm.reset();
     }
-    this.loginForm.reset(); 
-  } 
+  }
+  
 
 }

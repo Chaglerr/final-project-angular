@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { IUser, User, data } from '../../interfaces/interfaces';
 import { BehaviorSubject } from 'rxjs';
+import { HttpsService } from '../http/https.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationService {
 
-  constructor() { }
+  constructor(private http: HttpsService) { }
 
   private liveDataSubject = new BehaviorSubject<data>({
     users: [{email: "g@gmail.com", password:"paroli11", nickname: "gio", id: "u0", posts: []}], currentUserId: "-1"
@@ -17,34 +18,46 @@ export class AuthorizationService {
   public currUserId = "-1";
   public nextId = "u1";
 
-  public validLoginData(email: string, password: string): boolean {
-
-    for (const user of this.liveDataSubject.getValue().users) {
-      if (user.email === email && user.password === password) {
-        const previousData = this.liveDataSubject.getValue();
-        previousData.currentUserId = user.id;
-        this.liveDataSubject.next(previousData);
-        this.currUserId = user.id;
-        return true; 
+  public async validLoginData(email: string, password: string): Promise<boolean> {
+    try {
+      const users: IUser[] | undefined = await this.http.getUsers().toPromise();
+      if (users) {
+        const matchingUser = users.find(user => user.email === email && user.password === password);
+  
+        if (matchingUser) {
+          const previousData = this.liveDataSubject.getValue();
+          previousData.currentUserId = matchingUser.id;
+          this.liveDataSubject.next(previousData);
+          this.currUserId = matchingUser.id;
+          return true;
+        }
       }
+  
+      this.currUserId = "-1";
+      return false;
+    } catch (error) {
+      console.error('Error during login:', error);
+      return false;
     }
-   
-    this.currUserId = "-1";
-    return false; 
   }
-
-
    
   public registerUser(user: User): void {
     const data = this.liveDataSubject.getValue();
     data.users.push({
       ...user, 
       id: this.nextId,
-      posts: []
     });
-    this.changeId(this.nextId);
+    this.http.addUser({...user, id: `${crypto.randomUUID()}`})
+    .subscribe(
+    (response) => {
+      console.log('Successfully created a new record:', response);
+    },
+    (error) => {
+      console.error('Error creating a new record:', error);
+    }
+  );
     this.liveDataSubject.next(data);
-    this.printdata();
+    //this.printdata();
   }
 
   private printdata(){
@@ -54,11 +67,7 @@ export class AuthorizationService {
     }
   }
 
-  private changeId(id: string): void {
-    const currentIdNumber = parseInt(id.substring(1));
-    const nextIdNumber = currentIdNumber + 1;
-    this.nextId = 'u' + nextIdNumber.toString(); 
-  }
+  
 
   public logOut(): void{
     const previousData = this.liveDataSubject.getValue();

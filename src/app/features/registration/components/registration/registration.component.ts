@@ -4,6 +4,8 @@ import { passwordMatch,  validateNickname, customPassValidator } from '../../../
 import { FormBuilder, FormControl, ValidationErrors, Validators, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthorizationService } from 'src/app/shared/services/authorization-services/authorization.service';
+import { HttpsService } from 'src/app/shared/services/http/https.service';
+import { User } from 'src/app/shared/interfaces/interfaces';
 @Component({
   selector: 'app-registration',
   standalone: true,
@@ -12,7 +14,8 @@ import { AuthorizationService } from 'src/app/shared/services/authorization-serv
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent {
-  constructor(public formBuilder: FormBuilder,  public router: Router, private userControl: AuthorizationService){}
+  constructor(public formBuilder: FormBuilder,  public router: Router, 
+    private userControl: AuthorizationService, private http: HttpsService){}
 
   public registerForm = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
@@ -23,7 +26,8 @@ export class RegistrationComponent {
   }, { validators: [passwordMatch] });
 
   public registration(): void{ 
-    this.userControl.registerUser(this.registerForm.value);
+    if(!this.registerForm.valid) return;
+    this.userControl.registerUser(this.registerForm.value as User);
     this.registerForm.reset();
     this.router.navigate(['/login']);
   }
