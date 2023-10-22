@@ -14,7 +14,18 @@ import { PostsService } from '../../services/posts-services/posts.service';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent {
-  constructor(public formBuilder: FormBuilder, public userControl: AuthorizationService, private http: HttpsService, private postsService: PostsService){};
+  
+  displayedPosts: string[];
+  postsGeneric: posts[];
+  loggedInId: string;
+  loggedInUser: IUser;
+
+  constructor(public formBuilder: FormBuilder, public userControl: AuthorizationService, private http: HttpsService, private postsService: PostsService){
+    this.displayedPosts = [];
+    this.postsGeneric = [];
+    this.loggedInId = "";
+    this.loggedInUser = { id: "-1", email: "", nickname: "", password: "", posts: [] };
+  };
 
   public detailedInfoForm = this.formBuilder.group({
     academicState: ['', Validators.required],
@@ -26,16 +37,20 @@ export class HomePageComponent {
     description: [''],
   });
 
-  displayedPosts: string[] = [];
-  postsGeneric: posts[] = [];
-  loggedInId: string = "";
-  loggedInUser: IUser = {id: "-1", email: "", nickname: "", password: "", posts: []};
+  
   
 
   ngOnInit() {
     this.loggedInId = this.userControl.currUserId;
 
-    // Load posts from the HTTP service
+    this.http.getUserById(this.loggedInId).subscribe(
+      (user: IUser) => {
+        this.loggedInUser = user;
+      },
+      (error) => {
+        console.error('Error while getting user:', error);
+      }
+    );
     this.http.getPosts().subscribe(
       (posts: IPost[]) => {
         this.postsService.posts = posts;
@@ -61,10 +76,11 @@ export class HomePageComponent {
   public postInfo(){
     let newPost = this.generatePost();
     if(newPost === "") return;
-    const data = this.detailedInfoForm.value;
-    const genericNewPost = {academicState: data.academicState || "", subjectSelect: data.subjectSelect || "", availabilitySelect: data.availabilitySelect || "",
-                          locationSelect: data.locationSelect || "", languageSelect: data.languageSelect || "", priceSelect: data.priceSelect || "", description: data.description || "" }
-    this.postsGeneric.push(genericNewPost);
+    // const data = this.detailedInfoForm.value;
+    // const genericNewPost = {academicState: data.academicState || "", subjectSelect: data.subjectSelect || "", availabilitySelect: data.availabilitySelect || "",
+    //                       locationSelect: data.locationSelect || "", languageSelect: data.languageSelect || "", priceSelect: data.priceSelect || "", description: data.description || "" }
+    // this.postsGeneric.push(genericNewPost);
+    this.postsService.addPost(newPost);
     this.loggedInUser.posts.push(newPost);
     this.displayedPosts.push(newPost);
     this.detailedInfoForm.reset(this.defaultFormValues);

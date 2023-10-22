@@ -26,9 +26,19 @@ export class PostsService {
       id: `${crypto.randomUUID()}`,
       content: content
     };
-    this.http.savePostsToServer(post);
+    console.log('Posting data:', post); // Add this line for debugging
+    this.http.savePostsToServer(post).subscribe(
+      (response) => {
+        // Handle the response from the server, if needed
+        console.log('Post response:', response);
+      },
+      (error) => {
+        console.error('Error posting data:', error);
+      }
+    );
     this.posts.push(post);
   }
+  
 
   getPostsToDisplay(): string[] {
     let res = [];
