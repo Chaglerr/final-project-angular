@@ -2,7 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto';
+    font-family: 'Montserrat', sans-serif;
+    
   }
   
   a, button {
@@ -15,8 +16,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #e6b700;
-  
+    background-color: #333;
+
     > div:first-of-type {
       display: flex;
       align-items: center;

@@ -2,7 +2,7 @@ $primary-color: #0090de;
 $button-color: royalblue;
 
 *{
-  font-family: 'Roboto';
+  font-family: 'Montserrat', sans-serif;
 }
 
 .main-section {
@@ -75,8 +75,23 @@ $button-color: royalblue;
         
         border-radius: 5px;
         padding: 10px;
-        overflow-y: auto; /* Add a vertical scrollbar when the content overflows */
-        max-height: 300px; /* Set a max height for the container */
+        overflow-y: auto; 
+        max-height: 450px;
+        scrollbar-width: thin;
+        scrollbar-color: $primary-color $button-color;
+
+        &::-webkit-scrollbar {
+          width: 10px; /* Set the width of the scrollbar */
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: $primary-color; /* Color of the thumb */
+          border-radius: 5px; /* Rounded corners for the thumb */
+        }
+
+        &::-webkit-scrollbar-track {
+          background-color: $button-color; /* Color of the track */
+        }
       }
     }
 }

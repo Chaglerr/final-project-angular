@@ -83,7 +83,7 @@ export class MyProfileComponent {
     this.http.deleteUserWithId(this.currUserId);
   }
 
-  private removePost(id: string){
+  public removePost(id: string){
     this.http.deletePostWithId(id);
     if (this.selectedUser) {
     const postIndex = this.selectedUser.posts.findIndex((postObj) => postObj.id === id);
@@ -95,6 +95,7 @@ export class MyProfileComponent {
         console.log(`Post with ID ${id} not found in selectedUser's posts.`);
       }
     }
+    this.fetchData();
   }
 
 
