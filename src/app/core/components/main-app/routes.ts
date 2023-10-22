@@ -25,11 +25,6 @@ export const ROUTES: Routes = [
         loadComponent: ()=> import('../../../features/home-page/components/home-page/home-page.component').then(m => m.HomePageComponent),
     },
     {
-        path: 'chat',
-        canActivate: [loggedIn],
-        loadComponent: ()=> import('../../../features/chat/components/chat/chat.component').then(m => m.ChatComponent),
-    },
-    {
         path: 'myprofile',
         canActivate: [loggedIn],
         loadComponent: ()=> import('../../../features/my-profile/components/my-profile/my-profile.component').then(m => m.MyProfileComponent),

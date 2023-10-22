@@ -51,10 +51,6 @@ export class NavBarComponent{
     this.router.navigate(['/homepage']);
   }
 
-  public redirectToChat(): void{
-    this.router.navigate(['/chat']);
-  }
-
   public redirectToMyProfile(): void{
     this.router.navigate(['/myprofile']);
   }
