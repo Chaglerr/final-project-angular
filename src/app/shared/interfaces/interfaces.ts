@@ -2,7 +2,7 @@ export interface User{
     email: string,
     password: string,
     nickname: string,
-    posts: string[],
+    posts: IPost[],
 }
 
 export interface IUser extends User{

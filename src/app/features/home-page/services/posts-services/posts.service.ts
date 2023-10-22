@@ -21,9 +21,9 @@ export class PostsService {
   public posts: IPost[] = [];
   public toDisplayPosts: string[] = [];
 
-  addPost(content: string): void {
+  addPost(content: string, newId: string): void {
     const post: IPost = {
-      id: `${crypto.randomUUID()}`,
+      id: newId,
       content: content
     };
     console.log('Posting data:', post); 
@@ -38,7 +38,7 @@ export class PostsService {
     this.posts.push(post);
   }
 
-  updatePostsOfUser(user: IUser){
+  updatePostsOfUser(user: IUser, newId: string){
     const id = user.id;
     this.http.updateUserPosts(id, user);
   }

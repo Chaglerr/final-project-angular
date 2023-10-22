@@ -4,18 +4,51 @@
 
 <div class="container">
     <div class="user-info">
-      <h2>User Information</h2>
+      <h2>Account Information</h2>
       <p><strong>Email:</strong> {{ userData.email }}</p>
       <p><strong>Nickname:</strong> {{ userData.nickname }}</p>
+      <button
+            (click)="editUser(userData)"
+            *ngIf="userData.id === this.userControl.currUserId"
+          >
+            Edit
+          </button>
+          <button
+             (click)="showConfirmation(userData)"
+            class="delButton"
+            *ngIf="userData.id ===  this.userControl.currUserId"
+          >
+            Delete
+          </button>
     </div>
   
     <div class="user-posts">
-      <h2>User Posts</h2>
+      <h2>My Posts</h2>
       <ul>
         <li *ngFor="let post of userData.posts">
-          {{ post }}
+          {{ post.content }}
         </li>
       </ul>
     </div>
   </div>
   
+  <div *ngIf="showConfirm" class="confirmation-message">
+    <p>This action will remove a user with this email: {{ selectedUser?.email }}</p>
+    <p>Are you sure?</p>
+    <button (click)="removeUser()">Confirm</button>
+    <button (click)="cancelRemove()">Cancel</button>
+</div>
+
+<form [formGroup]="updateForm" class="update-form" *ngIf="isEditing">
+    <h2>Edit User</h2>
+    <label>Email:</label>
+    <input formControlName="email" type="email">
+    <label>Password:</label>
+    <input formControlName="password" type="password">
+    <label>Confirm Password:</label>
+    <input formControlName="confirmpassword" type="password">
+    <label>Nickname:</label>
+    <input formControlName="nickname">
+    <input formControlName="id" type="hidden">
+    <button type="submit" [disabled]="!updateForm.valid" (click)="onUpdate()">Update</button>
+  </form>

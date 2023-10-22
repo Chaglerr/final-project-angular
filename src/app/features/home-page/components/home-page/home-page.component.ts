@@ -76,17 +76,20 @@ export class HomePageComponent {
   public postInfo(){
     let newPost = this.generatePost();
     if(newPost === "") return;
-    this.postsService.addPost(newPost);
-    const arr = this.loggedInUser.posts;
-    arr.push(newPost);
+    const newId = `${crypto.randomUUID()}`;
+    this.postsService.addPost(newPost, newId);
+    const arr: IPost[] = this.loggedInUser.posts;
+    
+    const postObj = {content: newPost, id: newId}
+    arr.push(postObj);
     const updated = this.loggedInUser;
     updated.posts = arr;
     console.log(updated);
     
-    this.postsService.updatePostsOfUser(updated);
+    this.postsService.updatePostsOfUser(updated, newId);
     this.displayedPosts.push(newPost);
     this.detailedInfoForm.reset(this.defaultFormValues);
-    console.log(`giovar ${this.loggedInUser.posts}`)
+  
   }
 
   private generatePost(): string{ 

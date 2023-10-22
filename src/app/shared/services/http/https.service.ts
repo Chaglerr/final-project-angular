@@ -65,4 +65,30 @@ export class HttpsService {
       }
     );
   }
+
+  public deleteUserWithId(id: string){
+    const endpoint = `/users/${id}`;
+    const fullurl = this.baseUrl + endpoint;
+    this.http.delete(fullurl).subscribe(
+      (response) => {
+        console.log(`Successfully deleted user with ID ${id}:, response`);
+      },
+      (error) => {
+        console.error(`Error deleting user with ID ${id}:, error`);
+      }
+    );
+  }
+
+  public deletePostWithId(id: string){
+    const endpoint = `/posts/${id}`;
+    const fullurl = this.baseUrl + endpoint;
+    this.http.delete(fullurl).subscribe(
+      (response) => {
+        console.log(`Successfully deleted user with ID ${id}:, response`);
+      },
+      (error) => {
+        console.error(`Error deleting user with ID ${id}:, error`);
+      }
+    );
+  }
 }

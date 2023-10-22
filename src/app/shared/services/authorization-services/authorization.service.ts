@@ -83,4 +83,6 @@ export class AuthorizationService {
     let dummyUser = {id: "-1", email: "", nickname: "", password: "", posts: []};
     return dummyUser;
   }
+
+  
 }

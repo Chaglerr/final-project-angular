@@ -1,39 +1,23 @@
 {
   "posts": [
     {
-      "id": "2288dd4f-82e3-4169-be9d-93a607bc92ad",
-      "content": "Hello, my name is giogio, I'm here to help you with math. My prefered time during the week is weekdays, as of the place of lessons, I would prefer online and prefered language would be English. For me acceptable price per lesson would be around 0-20. \nSome additional information about me: gio"
-    },
-    {
-      "id": "a2bcead7-ef45-4e85-af8e-9b7dfcc54ea4",
-      "content": "Hello, my name is giogio, I'm here to help you with calculus. My prefered time during the week is weekdays, as of the place of lessons, I would prefer city1 and prefered language would be English. For me acceptable price per lesson would be around 20-40. \nSome additional information about me: magarivar"
-    },
-    {
-      "id": "c6728baf-ecb5-4cf8-bdfc-1eefe3faf4cb",
-      "content": "Hello, my name is giogio, I'm here to help you with calculus. My prefered time during the week is weekdays, as of the place of lessons, I would prefer city1 and prefered language would be English. For me acceptable price per lesson would be around 0-20. \nSome additional information about me: lukavar"
+      "id": "b96469ba-782d-4ddf-bfde-bca904985930",
+      "content": "Hello, my name is gio, I'm here to help you with physics. My prefered time during the week is weekdays, as of the place of lessons, I would prefer city1 and prefered language would be Georgian. For me acceptable price per lesson would be around 0-20. \nSome additional information about me: asas"
     }
   ],
   "users": [
     {
-      "email": "g@g.com",
-      "password": "gggg1111",
-      "confirmpassword": "gggg1111",
-      "nickname": "gg",
-      "agreement": true,
-      "id": "41883f1a-051b-4b19-8be2-115237a397e1",
-      "posts": []
-    },
-    {
       "email": "g@gmail.com",
       "password": "paroli11",
       "confirmpassword": "paroli11",
-      "nickname": "giogio",
+      "nickname": "gio",
       "agreement": true,
-      "id": "d318a90c-d4d9-4e68-9b3f-076eb452ff7e",
+      "id": "3c2d667c-dee8-40f1-9eee-2ecaf3c570f4",
       "posts": [
-        "Hello, my name is giogio, I'm here to help you with math. My prefered time during the week is weekdays, as of the place of lessons, I would prefer online and prefered language would be English. For me acceptable price per lesson would be around 0-20. \nSome additional information about me: gio",
-        "Hello, my name is giogio, I'm here to help you with calculus. My prefered time during the week is weekdays, as of the place of lessons, I would prefer city1 and prefered language would be English. For me acceptable price per lesson would be around 20-40. \nSome additional information about me: magarivar",
-        "Hello, my name is giogio, I'm here to help you with calculus. My prefered time during the week is weekdays, as of the place of lessons, I would prefer city1 and prefered language would be English. For me acceptable price per lesson would be around 0-20. \nSome additional information about me: lukavar"
+        {
+          "content": "Hello, my name is gio, I'm here to find someone who can help me with math. My prefered time during the week is weekdays, as of the place of lessons, I would prefer city1 and prefered language would be Georgian. For me acceptable price per lesson would be around 0-20. \nSome additional information about me: dfgdf",
+          "id": "0a83d64a-5759-4d80-bfb8-aac99f873cda"
+        }
       ]
     }
   ]
