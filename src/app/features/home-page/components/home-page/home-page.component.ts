@@ -92,31 +92,40 @@ export class HomePageComponent {
   
   }
 
-  private generatePost(): string{ 
+  private generatePost(): string {
     const data = this.detailedInfoForm.value;
-    if(!data.academicState || !data.availabilitySelect || !data.priceSelect || !data.subjectSelect || !data.locationSelect || !data.languageSelect) return "";
-    let res = `Hello, my name is ${this.loggedInUser.nickname}, `;
-    if(data.academicState === 'teach') res += `I'm here to help you with ${data.subjectSelect}. `;
-    else if(data.academicState === 'learn') res += `I'm here to find someone who can help me with ${data.subjectSelect}. `;
-    res += `My prefered time during the week is ${data.availabilitySelect}, as of the place of lessons, I would prefer ${data.locationSelect} and prefered language would be ${data.languageSelect}. For me acceptable price per lesson would be around ${data.priceSelect}. \n`
-    if(data.description !== "") res += `Some additional information about me: ${data.description}`;
+    if (!data.academicState || !data.availabilitySelect || !data.priceSelect || !data.subjectSelect || !data.locationSelect || !data.languageSelect) {
+      return "";
+    }
+    const academicStateText = data.academicState === 'teach' ? 'I can teach' : 'I want to learn';
+    const subjectText = data.subjectSelect === 'other' ? `about ${data.description}` : `You ${data.subjectSelect}`;
+    const availabilityText = `on ${data.availabilitySelect}`;
+    const locationText = data.locationSelect === 'online' ? 'online' : `in ${data.locationSelect}`;
+    const languageText = data.languageSelect === 'otherLanguage' ? `in ${data.description}` : `in ${data.languageSelect}`;
+    const priceText = data.priceSelect === 'other' ? `Price negotiable` : `Only for ${data.priceSelect}$ per lesson`;
+    let res = `Hello, my name is ${this.loggedInUser.nickname}. ${academicStateText} ${subjectText}. I'm available ${availabilityText}, prefer ${locationText}, and can communicate ${languageText}. ${priceText}.`;
+    if (data.description) {
+      res += ` Additional information: ${data.description}`;
+    }
     return res;
   }
 
   public detailedSearch() {
     const searchData = this.detailedInfoForm.value;
-    const filteredPosts = this.postsGeneric.filter((post) => {
-      return (
-        (!searchData.academicState || post.academicState === searchData.academicState) &&
-        (!searchData.subjectSelect || post.subjectSelect === searchData.subjectSelect) &&
-        (!searchData.availabilitySelect || post.availabilitySelect === searchData.availabilitySelect) &&
-        (!searchData.locationSelect || post.locationSelect === searchData.locationSelect) &&
-        (!searchData.languageSelect || post.languageSelect === searchData.languageSelect) &&
-        (!searchData.priceSelect || post.priceSelect === searchData.priceSelect) &&
-        (!searchData.description || post.description.includes(searchData.description))
-      );
-    });
-    //use data, works good :)
-    console.log(filteredPosts);
+    if (Object.values(searchData).every(value => value === '')) {
+      this.displayedPosts = this.postsService.getPostsToDisplay();
+    } else {
+      this.displayedPosts = this.postsService.getPostsToDisplay().filter(post => {
+        return (
+          (!searchData.academicState || post.includes(searchData.academicState)) &&
+          (!searchData.subjectSelect || post.includes(searchData.subjectSelect)) &&
+          (!searchData.availabilitySelect || post.includes(searchData.availabilitySelect)) &&
+          (!searchData.locationSelect || post.includes(searchData.locationSelect)) &&
+          (!searchData.languageSelect || post.includes(searchData.languageSelect)) &&
+          (!searchData.priceSelect || post.includes(searchData.priceSelect)) &&
+          (!searchData.description || post.includes(searchData.description))
+        );
+      });
+    }
   }
 }

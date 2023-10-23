@@ -1,32 +1,16 @@
 {
   "posts": [
     {
-      "id": "b96469ba-782d-4ddf-bfde-bca904985930",
-      "content": "Hello, my name is gio, I'm here to help you with physics. My prefered time during the week is weekdays, as of the place of lessons, I would prefer city1 and prefered language would be Georgian. For me acceptable price per lesson would be around 0-20. \nSome additional information about me: asas"
+      "id": "930a7cb4-7e6c-4560-8155-f099ea85c304",
+      "content": "Hello, my name is example2. I can teach on math. I'm available on weekdays, prefer online, and can communicate in Georgian. for 0-20 per lesson. Additional information: newtext"
     },
     {
-      "id": "0e6cb6fa-49c6-4347-a783-ffca900e051d",
-      "content": "Hello, my name is giorgi, I'm here to find someone who can help me with physics. My prefered time during the week is weekends, as of the place of lessons, I would prefer city1 and prefered language would be English. For me acceptable price per lesson would be around 20-40. \nSome additional information about me: giogio"
+      "id": "202ead2c-8771-4660-bdfb-1b6b92908a1b",
+      "content": "Hello, my name is example2. I can teach You math. I'm available on weekdays, prefer online, and can communicate in Georgian. Only for 0-20$ per lesson."
     },
     {
-      "id": "883fca2f-b257-4474-aab7-b47b99c3336e",
-      "content": "Hello, my name is giuna123, I'm here to help you with math. My prefered time during the week is weekends, as of the place of lessons, I would prefer city1 and prefered language would be otherLanguage. For me acceptable price per lesson would be around 20-40. \nSome additional information about me: sa"
-    },
-    {
-      "id": "939b1603-566d-45d4-8c97-19fb3a98dff7",
-      "content": "Hello, my name is example, I'm here to help you with math. My prefered time during the week is weekdays, as of the place of lessons, I would prefer city1 and prefered language would be Georgian. For me acceptable price per lesson would be around 20-40. \nSome additional information about me: 1"
-    },
-    {
-      "id": "3110fc4b-c80e-4886-ba72-68a6a10dc9ff",
-      "content": "Hello, my name is example1, I'm here to find someone who can help me with math. My prefered time during the week is weekdays, as of the place of lessons, I would prefer city1 and prefered language would be English. For me acceptable price per lesson would be around 0-20. \nSome additional information about me: 1"
-    },
-    {
-      "id": "087cde34-0e0c-4d57-90dd-9da4b8990731",
-      "content": "Hello, my name is example1, I'm here to help you with calculus. My prefered time during the week is weekdays, as of the place of lessons, I would prefer otherCity and prefered language would be English. For me acceptable price per lesson would be around 0-20. \nSome additional information about me: 12"
-    },
-    {
-      "id": "fca89522-5607-4169-b2d2-02b41683a2f6",
-      "content": "Hello, my name is example11, I'm here to help you with math. My prefered time during the week is weekdays, as of the place of lessons, I would prefer city1 and prefered language would be English. For me acceptable price per lesson would be around 0-20. \nSome additional information about me: wasashleli"
+      "id": "a347e837-0dc1-4273-a082-2c91b1656fc0",
+      "content": "Hello, my name is example2. I want to learn about . I'm available on Mixed, prefer in otherCity, and can communicate in . Price negotiable."
     }
   ],
   "users": [
@@ -37,7 +21,20 @@
       "nickname": "example2",
       "agreement": true,
       "id": "5gef7f86-6421-4c74-a1a5-99f92d8ce82b",
-      "posts": []
+      "posts": [
+        {
+          "content": "Hello, my name is example2. I can teach on math. I'm available on weekdays, prefer online, and can communicate in Georgian. for 0-20 per lesson. Additional information: newtext",
+          "id": "930a7cb4-7e6c-4560-8155-f099ea85c304"
+        },
+        {
+          "content": "Hello, my name is example2. I can teach You math. I'm available on weekdays, prefer online, and can communicate in Georgian. Only for 0-20$ per lesson.",
+          "id": "202ead2c-8771-4660-bdfb-1b6b92908a1b"
+        },
+        {
+          "content": "Hello, my name is example2. I want to learn about . I'm available on Mixed, prefer in otherCity, and can communicate in . Price negotiable.",
+          "id": "a347e837-0dc1-4273-a082-2c91b1656fc0"
+        }
+      ]
     }
   ]
 }
