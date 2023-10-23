@@ -11,6 +11,11 @@
     {
       "id": "a347e837-0dc1-4273-a082-2c91b1656fc0",
       "content": "Hello, my name is example2. I want to learn about . I'm available on Mixed, prefer in otherCity, and can communicate in . Price negotiable."
+    },
+    {
+      "id": "dc82d556-6c4d-49f0-a5d1-9af0ccf8eda5",
+      "content": "Hello, my name is rat. I can teach You math. I'm available on weekends, prefer in city1, and can communicate in English. Only for 0-20$ per lesson. Additional information: 123",
+      "userId": "281b3b30-e312-46d6-ba4b-e37e9a88595b"
     }
   ],
   "users": [
@@ -21,20 +26,7 @@
       "nickname": "example2",
       "agreement": true,
       "id": "5gef7f86-6421-4c74-a1a5-99f92d8ce82b",
-      "posts": [
-        {
-          "content": "Hello, my name is example2. I can teach on math. I'm available on weekdays, prefer online, and can communicate in Georgian. for 0-20 per lesson. Additional information: newtext",
-          "id": "930a7cb4-7e6c-4560-8155-f099ea85c304"
-        },
-        {
-          "content": "Hello, my name is example2. I can teach You math. I'm available on weekdays, prefer online, and can communicate in Georgian. Only for 0-20$ per lesson.",
-          "id": "202ead2c-8771-4660-bdfb-1b6b92908a1b"
-        },
-        {
-          "content": "Hello, my name is example2. I want to learn about . I'm available on Mixed, prefer in otherCity, and can communicate in . Price negotiable.",
-          "id": "a347e837-0dc1-4273-a082-2c91b1656fc0"
-        }
-      ]
+      "posts": []
     },
     {
       "email": "example@gmail.com",
@@ -62,7 +54,13 @@
       "nickname": "rat",
       "agreement": true,
       "id": "281b3b30-e312-46d6-ba4b-e37e9a88595b",
-      "posts": [],
+      "posts": [
+        {
+          "content": "Hello, my name is rat. I can teach You math. I'm available on weekends, prefer in city1, and can communicate in English. Only for 0-20$ per lesson. Additional information: 123",
+          "id": "dc82d556-6c4d-49f0-a5d1-9af0ccf8eda5",
+          "userId": "281b3b30-e312-46d6-ba4b-e37e9a88595b"
+        }
+      ],
       "rating": {
         "rating": 0,
         "ratedNum": 0

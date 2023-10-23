@@ -77,10 +77,10 @@ export class HomePageComponent {
     let newPost = this.generatePost();
     if(newPost === "") return;
     const newId = `${crypto.randomUUID()}`;
-    this.postsService.addPost(newPost, newId);
+    this.postsService.addPost(newPost, newId, this.loggedInId);
     const arr: IPost[] = this.loggedInUser.posts;
     
-    const postObj = {content: newPost, id: newId}
+    const postObj = {content: newPost, id: newId, userId: this.loggedInId}
     arr.push(postObj);
     const updated = this.loggedInUser;
     updated.posts = arr;
@@ -128,5 +128,9 @@ export class HomePageComponent {
       });
     }
     this.detailedInfoForm.reset(this.defaultFormValues);
+  }
+
+  public openUserPopup(post: IPost){
+
   }
 }

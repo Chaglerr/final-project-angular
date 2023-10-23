@@ -34,4 +34,5 @@ export interface posts{
 export interface IPost{
     id: string,
     content: string,
+    userId: string,
 }

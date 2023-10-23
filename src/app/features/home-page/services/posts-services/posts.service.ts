@@ -21,10 +21,11 @@ export class PostsService {
   public posts: IPost[] = [];
   public toDisplayPosts: string[] = [];
 
-  addPost(content: string, newId: string): void {
+  addPost(content: string, newId: string, userId: string): void {
     const post: IPost = {
       id: newId,
-      content: content
+      content: content,
+      userId: userId
     };
     console.log('Posting data:', post); 
     this.http.savePostsToServer(post).subscribe(
