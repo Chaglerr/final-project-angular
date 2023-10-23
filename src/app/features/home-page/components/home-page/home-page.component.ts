@@ -20,7 +20,7 @@ export class HomePageComponent {
   loggedInUser: IUser;
   detailedData: string[];
   isLookingAtDetails: boolean;
-  selectedRating: number;
+  selectedRating: string;
   selectedUser: IUser;
 
   constructor(public formBuilder: FormBuilder, public userControl: AuthorizationService, private http: HttpsService, private postsService: PostsService){
@@ -28,7 +28,7 @@ export class HomePageComponent {
     this.detailedData = [];
     this.loggedInId = "";
     this.isLookingAtDetails = false;
-    this.selectedRating = -1;
+    this.selectedRating = "-1";
     this.loggedInUser = { id: "-1", email: "", nickname: "", password: "", posts: [], rating: {ratedNum: 0, rating: 0} };
     this.selectedUser = { id: "-1", email: "", nickname: "", password: "", posts: [], rating: {ratedNum: 0, rating: 0} };
   };
@@ -154,17 +154,19 @@ export class HomePageComponent {
 
 
   public submitRating() {
-    if (this.selectedRating === -1) return;
+    if (this.selectedRating === "-1") return;
+    const num = parseInt(this.selectedRating, 10);
     const oldRating = this.selectedUser.rating;
-    const newRating = (oldRating.rating * oldRating.ratedNum + this.selectedRating) / (oldRating.ratedNum + 1);
-    const newRatingObj: IRating = { rating: newRating, ratedNum: oldRating.ratedNum + 1  };
+    const newRatedNum = oldRating.ratedNum + 1;
+    const newRating = (oldRating.rating * oldRating.ratedNum + num) / (oldRating.ratedNum + 1);
+    const newRatingObj: IRating = { rating: newRating, ratedNum: newRatedNum  };
     const updatedUser: IUser = {...this.selectedUser, rating: newRatingObj};
     this.http.updateUserPosts(this.selectedUser.id, updatedUser);
     this.closePopup(); 
   }
 
   public closePopup(){
-    this.selectedRating = -1;
+    this.selectedRating = "-1";
     this.isLookingAtDetails = false;
     this.selectedUser = { id: "-1", email: "", nickname: "", password: "", posts: [], rating: {ratedNum: 0, rating: 0} };
     this.detailedData = [];

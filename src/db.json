@@ -9,6 +9,11 @@
       "id": "91e71ca7-765a-43bf-9366-0df2132f1045",
       "content": "Hello, my name is test. I can teach You physics. I'm available on Mixed, prefer in city1, and can communicate in Georgian. Only for 20-40$ per lesson. Additional information: testi2",
       "userId": "296ecada-9bb9-4dcd-9597-8b422a58bbd3"
+    },
+    {
+      "id": "6e7e113a-6455-48b5-b8b3-68623e145df2",
+      "content": "Hello, my name is tekla. I can teach You physics. I'm available on weekends, prefer in city1, and can communicate in English. Only for 20-40$ per lesson. Additional information: rating tester",
+      "userId": "69d84180-6f19-415d-afd4-211911fc5892"
     }
   ],
   "users": [
@@ -40,8 +45,27 @@
         }
       ],
       "rating": {
-        "rating": 828.75,
-        "ratedNum": 4
+        "rating": 4144416.625,
+        "ratedNum": 8
+      }
+    },
+    {
+      "email": "tekla@gmail.com",
+      "password": "tekla1234",
+      "confirmpassword": "tekla1234",
+      "nickname": "tekla",
+      "agreement": true,
+      "id": "69d84180-6f19-415d-afd4-211911fc5892",
+      "posts": [
+        {
+          "content": "Hello, my name is tekla. I can teach You physics. I'm available on weekends, prefer in city1, and can communicate in English. Only for 20-40$ per lesson. Additional information: rating tester",
+          "id": "6e7e113a-6455-48b5-b8b3-68623e145df2",
+          "userId": "69d84180-6f19-415d-afd4-211911fc5892"
+        }
+      ],
+      "rating": {
+        "rating": 3.5,
+        "ratedNum": 2
       }
     }
   ]
