@@ -35,6 +35,25 @@
           "id": "a347e837-0dc1-4273-a082-2c91b1656fc0"
         }
       ]
+    },
+    {
+      "email": "example@gmail.com",
+      "password": "example11",
+      "confirmpassword": "example11",
+      "nickname": "ex",
+      "agreement": true,
+      "id": "90c53e37-341b-417c-8086-f3e847647678",
+      "posts": []
+    },
+    {
+      "email": "g@g.com",
+      "password": "paroli44",
+      "confirmpassword": "paroli44",
+      "nickname": "paro",
+      "agreement": true,
+      "id": "e6677ed6-d7b8-4518-b36e-ba63558926b3",
+      "posts": [],
+      "rating": 0
     }
   ]
 }

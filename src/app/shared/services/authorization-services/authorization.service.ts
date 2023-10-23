@@ -11,7 +11,7 @@ export class AuthorizationService {
   constructor(private http: HttpsService) { }
 
   private liveDataSubject = new BehaviorSubject<data>({
-    users: [{email: "g@gmail.com", password:"paroli11", nickname: "gio", id: "u0", posts: []}], currentUserId: "-1"
+    users: [{email: "g@gmail.com", password:"paroli11", nickname: "gio", id: "u0", posts: [], rating: 0}], currentUserId: "-1"
   });
 
   public currentState = this.liveDataSubject.asObservable();
@@ -23,7 +23,6 @@ export class AuthorizationService {
       const users: IUser[] | undefined = await this.http.getUsers().toPromise();
       if (users) {
         const matchingUser = users.find(user => user.email === email && user.password === password);
-  
         if (matchingUser) {
           const previousData = this.liveDataSubject.getValue();
           previousData.currentUserId = matchingUser.id;
@@ -32,7 +31,6 @@ export class AuthorizationService {
           return true;
         }
       }
-  
       this.currUserId = "-1";
       return false;
     } catch (error) {
@@ -48,8 +46,9 @@ export class AuthorizationService {
       ...user,
       posts: [], 
       id: this.nextId,
+      rating: 0.0
     });
-    this.http.addUser({...user, id: this.nextId, posts: []})
+    this.http.addUser({...user, id: this.nextId, posts: [], rating: 0.0})
     .subscribe(
     (response) => {
       console.log('Successfully created a new record:', response);
@@ -75,12 +74,12 @@ export class AuthorizationService {
     this.liveDataSubject.next(previousData);
   }
 
-  public getUser(id: string){
+  public getUser(id: string): IUser{
     const data = this.liveDataSubject.getValue();
     for(let i = 0; i < data.users.length; i++){
       if(data.users[i].id === id) return data.users[i];
     }
-    let dummyUser = {id: "-1", email: "", nickname: "", password: "", posts: []};
+    let dummyUser = {id: "-1", email: "", nickname: "", password: "", posts: [], rating: 0.0};
     return dummyUser;
   }
 

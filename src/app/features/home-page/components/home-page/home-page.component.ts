@@ -24,7 +24,7 @@ export class HomePageComponent {
     this.displayedPosts = [];
     this.postsGeneric = [];
     this.loggedInId = "";
-    this.loggedInUser = { id: "-1", email: "", nickname: "", password: "", posts: [] };
+    this.loggedInUser = { id: "-1", email: "", nickname: "", password: "", posts: [], rating: 0 };
   };
 
   public detailedInfoForm = this.formBuilder.group({
@@ -127,5 +127,6 @@ export class HomePageComponent {
         );
       });
     }
+    this.detailedInfoForm.reset(this.defaultFormValues);
   }
 }

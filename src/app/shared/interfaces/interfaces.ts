@@ -3,6 +3,7 @@ export interface User{
     password: string,
     nickname: string,
     posts: IPost[],
+    rating: number
 }
 
 export interface IUser extends User{
