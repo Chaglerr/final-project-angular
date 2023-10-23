@@ -7,7 +7,7 @@
       <h2>Account Information</h2>
       <p><strong>Email:</strong> {{ userData.email }}</p>
       <p><strong>Nickname:</strong> {{ userData.nickname }}</p>
-      <p><strong>Rating:</strong> {{ userData.rating }}</p>
+      <p><strong>Rating:</strong> {{ userData.rating.rating }}</p>
       <button
             (click)="editUser(userData)"
             *ngIf="userData.id === this.userControl.currUserId"

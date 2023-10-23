@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IUser, User, data } from '../../interfaces/interfaces';
+import { IRating, IUser, User, data } from '../../interfaces/interfaces';
 import { BehaviorSubject } from 'rxjs';
 import { HttpsService } from '../http/https.service';
 
@@ -11,7 +11,7 @@ export class AuthorizationService {
   constructor(private http: HttpsService) { }
 
   private liveDataSubject = new BehaviorSubject<data>({
-    users: [{email: "g@gmail.com", password:"paroli11", nickname: "gio", id: "u0", posts: [], rating: 0}], currentUserId: "-1"
+    users: [{email: "g@gmail.com", password:"paroli11", nickname: "gio", id: "u0", posts: [], rating: {rating: 0 , ratedNum: 0}}], currentUserId: "-1"
   });
 
   public currentState = this.liveDataSubject.asObservable();
@@ -42,13 +42,14 @@ export class AuthorizationService {
   public registerUser(user: User): void {
     const data = this.liveDataSubject.getValue();
     this.nextId = `${crypto.randomUUID()}`;
+    const firstRating: IRating = {rating: 0, ratedNum: 0};
     data.users.push({
       ...user,
       posts: [], 
       id: this.nextId,
-      rating: 0.0
+      rating: firstRating
     });
-    this.http.addUser({...user, id: this.nextId, posts: [], rating: 0.0})
+    this.http.addUser({...user, id: this.nextId, posts: [], rating: firstRating})
     .subscribe(
     (response) => {
       console.log('Successfully created a new record:', response);
@@ -79,7 +80,8 @@ export class AuthorizationService {
     for(let i = 0; i < data.users.length; i++){
       if(data.users[i].id === id) return data.users[i];
     }
-    let dummyUser = {id: "-1", email: "", nickname: "", password: "", posts: [], rating: 0.0};
+    const dummyRate: IRating = {rating: 0, ratedNum: 0};
+    let dummyUser = {id: "-1", email: "", nickname: "", password: "", posts: [], rating: dummyRate};
     return dummyUser;
   }
 

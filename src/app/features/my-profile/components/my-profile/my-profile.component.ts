@@ -18,7 +18,7 @@ export class MyProfileComponent {
   
   currUserSubscription: Subscription = new Subscription();
   currUserId: string = "-1";
-  userData: IUser = {id: "-1", email: "", nickname: "", password: "", posts: [], rating: 0};
+  userData: IUser = {id: "-1", email: "", nickname: "", password: "", posts: [], rating: {ratedNum: 0, rating: 0}};
   
   constructor(public userControl: AuthorizationService, private http: HttpsService, public formBuilder: FormBuilder, private router: Router){}
 

@@ -24,7 +24,7 @@ export class HomePageComponent {
     this.displayedPosts = [];
     this.postsGeneric = [];
     this.loggedInId = "";
-    this.loggedInUser = { id: "-1", email: "", nickname: "", password: "", posts: [], rating: 0 };
+    this.loggedInUser = { id: "-1", email: "", nickname: "", password: "", posts: [], rating: {ratedNum: 0, rating: 0} };
   };
 
   public detailedInfoForm = this.formBuilder.group({

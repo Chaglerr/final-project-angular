@@ -54,6 +54,19 @@
       "id": "e6677ed6-d7b8-4518-b36e-ba63558926b3",
       "posts": [],
       "rating": 0
+    },
+    {
+      "email": "rat@r.com",
+      "password": "gggg1111",
+      "confirmpassword": "gggg1111",
+      "nickname": "rat",
+      "agreement": true,
+      "id": "281b3b30-e312-46d6-ba4b-e37e9a88595b",
+      "posts": [],
+      "rating": {
+        "rating": 0,
+        "ratedNum": 0
+      }
     }
   ]
 }
