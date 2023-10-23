@@ -15,14 +15,14 @@ import { PostsService } from '../../services/posts-services/posts.service';
 })
 export class HomePageComponent {
   
-  displayedPosts: string[];
-  postsGeneric: posts[];
+  displayedPosts: IPost[];
+  //postsGeneric: posts[];
   loggedInId: string;
   loggedInUser: IUser;
 
   constructor(public formBuilder: FormBuilder, public userControl: AuthorizationService, private http: HttpsService, private postsService: PostsService){
     this.displayedPosts = [];
-    this.postsGeneric = [];
+    //this.postsGeneric = [];
     this.loggedInId = "";
     this.loggedInUser = { id: "-1", email: "", nickname: "", password: "", posts: [], rating: {ratedNum: 0, rating: 0} };
   };
@@ -87,7 +87,7 @@ export class HomePageComponent {
     console.log(updated);
     
     this.postsService.updatePostsOfUser(updated, newId);
-    this.displayedPosts.push(newPost);
+    this.displayedPosts.push(postObj);
     this.detailedInfoForm.reset(this.defaultFormValues);
   
   }
@@ -117,13 +117,13 @@ export class HomePageComponent {
     } else {
       this.displayedPosts = this.postsService.getPostsToDisplay().filter(post => {
         return (
-          (!searchData.academicState || post.includes(searchData.academicState)) &&
-          (!searchData.subjectSelect || post.includes(searchData.subjectSelect)) &&
-          (!searchData.availabilitySelect || post.includes(searchData.availabilitySelect)) &&
-          (!searchData.locationSelect || post.includes(searchData.locationSelect)) &&
-          (!searchData.languageSelect || post.includes(searchData.languageSelect)) &&
-          (!searchData.priceSelect || post.includes(searchData.priceSelect)) &&
-          (!searchData.description || post.includes(searchData.description))
+          (!searchData.academicState || post.content.includes(searchData.academicState)) &&
+          (!searchData.subjectSelect || post.content.includes(searchData.subjectSelect)) &&
+          (!searchData.availabilitySelect || post.content.includes(searchData.availabilitySelect)) &&
+          (!searchData.locationSelect || post.content.includes(searchData.locationSelect)) &&
+          (!searchData.languageSelect || post.content.includes(searchData.languageSelect)) &&
+          (!searchData.priceSelect || post.content.includes(searchData.priceSelect)) &&
+          (!searchData.description || post.content.includes(searchData.description))
         );
       });
     }
@@ -131,6 +131,6 @@ export class HomePageComponent {
   }
 
   public openUserPopup(post: IPost){
-
+      
   }
 }

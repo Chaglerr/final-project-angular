@@ -46,10 +46,10 @@ export class PostsService {
 
   
 
-  getPostsToDisplay(): string[] {
+  getPostsToDisplay(): IPost[] {
     let res = [];
     for(let i = 0; i < this.posts.length; i++){
-      res.push(this.posts[i].content);
+      res.push(this.posts[i]);
     }
     return res;
   }

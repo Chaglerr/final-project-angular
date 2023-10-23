@@ -11,11 +11,6 @@
     {
       "id": "a347e837-0dc1-4273-a082-2c91b1656fc0",
       "content": "Hello, my name is example2. I want to learn about . I'm available on Mixed, prefer in otherCity, and can communicate in . Price negotiable."
-    },
-    {
-      "id": "dc82d556-6c4d-49f0-a5d1-9af0ccf8eda5",
-      "content": "Hello, my name is rat. I can teach You math. I'm available on weekends, prefer in city1, and can communicate in English. Only for 0-20$ per lesson. Additional information: 123",
-      "userId": "281b3b30-e312-46d6-ba4b-e37e9a88595b"
     }
   ],
   "users": [
@@ -54,13 +49,7 @@
       "nickname": "rat",
       "agreement": true,
       "id": "281b3b30-e312-46d6-ba4b-e37e9a88595b",
-      "posts": [
-        {
-          "content": "Hello, my name is rat. I can teach You math. I'm available on weekends, prefer in city1, and can communicate in English. Only for 0-20$ per lesson. Additional information: 123",
-          "id": "dc82d556-6c4d-49f0-a5d1-9af0ccf8eda5",
-          "userId": "281b3b30-e312-46d6-ba4b-e37e9a88595b"
-        }
-      ],
+      "posts": [],
       "rating": {
         "rating": 0,
         "ratedNum": 0

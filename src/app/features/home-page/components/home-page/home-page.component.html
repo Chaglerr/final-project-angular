@@ -83,11 +83,11 @@
             <div class="post-container">
               <ng-container *ngFor="let post of displayedPosts; let i = index">
                 <div class="single-post" *ngIf="i % 2 === 0">
-                  {{ displayedPosts[i] }}
+                  {{ displayedPosts[i].content }}
                   <!-- <button class="chat-button" (click)="openUserPopup(post)">
                     More Infos
-                  </button>
-                   -->
+                  </button> -->
+                  
                   <!-- User Profile Popup (Angular Material Dialog) -->
                   <!-- <mat-dialog-content *ngIf="showUserPopup"> -->
                     <!-- Display user information here -->
@@ -99,7 +99,7 @@
 
                 </div>
                 <div class="single-post" *ngIf="i % 2 === 1">
-                  {{ displayedPosts[i] }}
+                  {{  displayedPosts[i].content }}
                   <button class="chat-button">
                         <div class="svg-wrapper-1">
                             <div class="svg-wrapper">
