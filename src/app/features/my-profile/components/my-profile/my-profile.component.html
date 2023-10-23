@@ -27,7 +27,7 @@
       <ul>
         <li *ngFor="let post of userData.posts">
           {{ post.content }}
-          <button (click)="removePost(post.id)" class="postRem">Delete Post</button>
+          <button (click)="removePost(post.id, userData)" class="postRem">Delete Post</button>
         </li>
       </ul>
     </div>

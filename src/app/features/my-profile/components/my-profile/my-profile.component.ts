@@ -77,13 +77,14 @@ export class MyProfileComponent {
   private removeUserAndPosts(): void {
     if(this.selectedUser){
       for(let postObj of this.selectedUser?.posts){
-        this.removePost(postObj.id);
+        this.removePost(postObj.id, this.selectedUser);
       }
     }
     this.http.deleteUserWithId(this.currUserId);
   }
 
-  public removePost(id: string){
+  public removePost(id: string, user: IUser){
+    this.selectedUser = user;
     this.http.deletePostWithId(id);
     if (this.selectedUser) {
     const postIndex = this.selectedUser.posts.findIndex((postObj) => postObj.id === id);
