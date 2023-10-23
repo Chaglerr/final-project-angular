@@ -1,30 +1,36 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { customPassValidator } from 'src/app/shared/validators/validators';
-import { IPost, IUser, posts } from 'src/app/shared/interfaces/interfaces';
+import { IPost, IRating, IUser, posts } from 'src/app/shared/interfaces/interfaces';
 import { AuthorizationService } from 'src/app/shared/services/authorization-services/authorization.service';
 import { HttpsService } from 'src/app/shared/services/http/https.service';
 import { PostsService } from '../../services/posts-services/posts.service';
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent {
   
   displayedPosts: IPost[];
-  //postsGeneric: posts[];
   loggedInId: string;
   loggedInUser: IUser;
+  detailedData: string[];
+  isLookingAtDetails: boolean;
+  selectedRating: number;
+  selectedUser: IUser;
 
   constructor(public formBuilder: FormBuilder, public userControl: AuthorizationService, private http: HttpsService, private postsService: PostsService){
     this.displayedPosts = [];
-    //this.postsGeneric = [];
+    this.detailedData = [];
     this.loggedInId = "";
+    this.isLookingAtDetails = false;
+    this.selectedRating = -1;
     this.loggedInUser = { id: "-1", email: "", nickname: "", password: "", posts: [], rating: {ratedNum: 0, rating: 0} };
+    this.selectedUser = { id: "-1", email: "", nickname: "", password: "", posts: [], rating: {ratedNum: 0, rating: 0} };
   };
 
   public detailedInfoForm = this.formBuilder.group({
@@ -131,6 +137,36 @@ export class HomePageComponent {
   }
 
   public openUserPopup(post: IPost){
-      
+      const clickedUserId = post.userId;
+      if(this.loggedInId === clickedUserId) return;
+      this.isLookingAtDetails = true;
+      this.http.getUsers().subscribe(
+        (data: IUser[]) => {
+          const foundUser = data.find(user => user.id === clickedUserId);
+          if(foundUser) {
+            this.selectedUser = foundUser;
+            this.detailedData.push(foundUser.email);
+            this.detailedData.push(foundUser.rating.rating.toString());
+            this.detailedData.push(foundUser.rating.ratedNum.toString());
+          }
+        });
+  }
+
+
+  public submitRating() {
+    if (this.selectedRating === -1) return;
+    const oldRating = this.selectedUser.rating;
+    const newRating = (oldRating.rating * oldRating.ratedNum + this.selectedRating) / (oldRating.ratedNum + 1);
+    const newRatingObj: IRating = { rating: newRating, ratedNum: oldRating.ratedNum + 1  };
+    const updatedUser: IUser = {...this.selectedUser, rating: newRatingObj};
+    this.http.updateUserPosts(this.selectedUser.id, updatedUser);
+    this.closePopup(); 
+  }
+
+  public closePopup(){
+    this.selectedRating = -1;
+    this.isLookingAtDetails = false;
+    this.selectedUser = { id: "-1", email: "", nickname: "", password: "", posts: [], rating: {ratedNum: 0, rating: 0} };
+    this.detailedData = [];
   }
 }

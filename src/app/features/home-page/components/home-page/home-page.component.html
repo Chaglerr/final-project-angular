@@ -84,40 +84,56 @@
               <ng-container *ngFor="let post of displayedPosts; let i = index">
                 <div class="single-post" *ngIf="i % 2 === 0">
                   {{ displayedPosts[i].content }}
-                  <!-- <button class="chat-button" (click)="openUserPopup(post)">
+                  <button class="chat-button" (click)="openUserPopup(post)">
                     More Infos
-                  </button> -->
-                  
-                  <!-- User Profile Popup (Angular Material Dialog) -->
-                  <!-- <mat-dialog-content *ngIf="showUserPopup"> -->
-                    <!-- Display user information here -->
-                    <!-- <p>User Info</p>
-                    <p>Average Rating: {{ userRating }}</p> -->
-
-                    <!-- <button mat-button (click)="closeUserPopup()">Close</button>
-                  </mat-dialog-content> -->
+                  </button>
 
                 </div>
                 <div class="single-post" *ngIf="i % 2 === 1">
                   {{  displayedPosts[i].content }}
-                  <button class="chat-button">
-                        <div class="svg-wrapper-1">
-                            <div class="svg-wrapper">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                                <path fill="none" d="M0 0h24v24H0z"></path>
-                                <path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
-                            </svg>
-                            </div>
-                        </div>
-                        <span>Chat</span>
-                        </button>
+                  <button class="chat-button" (click)="openUserPopup(post)">
+                    More Infos
+                  </button>
                 </div>
               </ng-container>
             </div>
           </div>
           
       </div>
-  
+      
+      <div *ngIf="isLookingAtDetails" class="userPopup">
+        <h2>User Details</h2>
+        <p>Email: {{ detailedData[0] }}</p>
+        <p>Rating: {{ detailedData[1] }}</p>
+        <h2>Rate This User</h2>
+        <form >
+            <label for="userRating">Select a Rating:</label>
+            <div>
+            <input type="radio" id="rating1" name="userRating" value="1" [(ngModel)]="selectedRating" required>
+            <label for="rating1">1</label>
+            </div>
+            <div>
+            <input type="radio" id="rating2" name="userRating" value="2" [(ngModel)]="selectedRating" required>
+            <label for="rating2">2</label>
+            </div>
+            <div>
+            <input type="radio" id="rating3" name="userRating" value="3" [(ngModel)]="selectedRating" required>
+            <label for="rating3">3</label>
+            </div>
+            <div>
+            <input type="radio" id="rating4" name="userRating" value="4" [(ngModel)]="selectedRating" required>
+            <label for="rating4">4</label>
+            </div>
+            <div>
+            <input type="radio" id="rating5" name="userRating" value="5" [(ngModel)]="selectedRating" required>
+            <label for="rating5">5</label>
+            </div>
+            
+            <button type="submit" (click)="submitRating()">Submit Rating</button>
+        </form>
+        <button (click)="closePopup()" class="closeButton">close</button>
+      </div>
+
       <section class="advertisement">
           <div class="ad-content">
               <p>Your Business could be advertised here!</p>

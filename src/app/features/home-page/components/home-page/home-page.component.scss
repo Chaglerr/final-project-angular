@@ -251,3 +251,62 @@ $button-color: royalblue;
     transition: all 0.3s;
   }
 }
+
+
+.userPopup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 400px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 999; 
+  form{
+    display: flex;
+    margin-right: 30px;
+  }
+  
+  h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  
+  label {
+    font-size: 16px;
+  }
+  
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+  
+  button {
+    background: #08c;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    height: 45px;
+    margin-left: 15px;
+    border-radius: 17px;
+
+    &:hover {
+      background: #0077b3;
+    }
+  }
+
+  .closeButton{
+    margin-top: 17px;
+    background-color: red;
+    &:hover {
+      background: lightcoral;
+    }
+  }
+}
