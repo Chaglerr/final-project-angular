@@ -12,21 +12,29 @@ import { AuthorizationService } from '../../services/authorization-services/auth
 })
 export class NavBarComponent{
 
+  public loggedIn: boolean = false;
+  private subscription: Subscription | undefined;
+  public isAdmin: boolean = false;
+  
   constructor(private router: Router, private userControl: AuthorizationService){
     userControl.currentState.subscribe(
       (data) => {
         this.loggedIn = (data.currentUserId == "-1" ? false : true);
+        this.isAdmin = data.isAdmin; 
       }
     );
   };
+  
 
-  public loggedIn: boolean = false;
-  private subscription: Subscription | undefined;
-
+  
   ngOnInit(): void {
     this.subscription = this.userControl.currentState.subscribe((userState)=>{
       userState.currentUserId === "-1" ? this.loggedIn = false : this.loggedIn = true;
+      this.isAdmin = userState.isAdmin;
     })
+    console.log(this.loggedIn);
+    console.log(this.isAdmin);
+    
   }
 
   

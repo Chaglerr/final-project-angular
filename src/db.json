@@ -67,6 +67,34 @@
         "rating": 3.5,
         "ratedNum": 2
       }
+    },
+    {
+      "email": "anika@gmail.com",
+      "password": "anika123",
+      "confirmpassword": "anika123",
+      "nickname": "anik",
+      "agreement": true,
+      "id": "b05d1370-46b5-4565-a401-679e3a704c7b",
+      "posts": [],
+      "rating": {
+        "rating": 0,
+        "ratedNum": 0
+      },
+      "isAdmin": false
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "admin123",
+      "confirmpassword": "admin123",
+      "nickname": "admin",
+      "agreement": true,
+      "id": "b0ad1370-46b5-4565-a401-679e3a704c7b",
+      "posts": [],
+      "rating": {
+        "rating": 0,
+        "ratedNum": 0
+      },
+      "isAdmin": true
     }
   ]
 }

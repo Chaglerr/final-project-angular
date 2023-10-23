@@ -29,8 +29,8 @@ export class HomePageComponent {
     this.loggedInId = "";
     this.isLookingAtDetails = false;
     this.selectedRating = "-1";
-    this.loggedInUser = { id: "-1", email: "", nickname: "", password: "", posts: [], rating: {ratedNum: 0, rating: 0} };
-    this.selectedUser = { id: "-1", email: "", nickname: "", password: "", posts: [], rating: {ratedNum: 0, rating: 0} };
+    this.loggedInUser = { id: "-1", email: "", nickname: "", password: "", posts: [], rating: {ratedNum: 0, rating: 0} , isAdmin : false};
+    this.selectedUser = { id: "-1", email: "", nickname: "", password: "", posts: [], rating: {ratedNum: 0, rating: 0}, isAdmin : false};
   };
 
   public detailedInfoForm = this.formBuilder.group({
@@ -168,7 +168,7 @@ export class HomePageComponent {
   public closePopup(){
     this.selectedRating = "-1";
     this.isLookingAtDetails = false;
-    this.selectedUser = { id: "-1", email: "", nickname: "", password: "", posts: [], rating: {ratedNum: 0, rating: 0} };
+    this.selectedUser = { id: "-1", email: "", nickname: "", password: "", posts: [], rating: {ratedNum: 0, rating: 0}, isAdmin : false};
     this.detailedData = [];
   }
 }

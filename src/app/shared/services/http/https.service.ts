@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IPost, IUser } from '../../interfaces/interfaces';
+import { IAdmin, IPost, IUser } from '../../interfaces/interfaces';
 import { Observable, catchError, mergeMap, throwError } from 'rxjs';
 
 @Injectable({
@@ -26,6 +26,12 @@ export class HttpsService {
     const endpoint = '/users';
     const fullUrl = this.baseUrl + endpoint;
     return this.http.get<IUser[]>(fullUrl);
+  }
+
+  public getAdmins(): Observable<IAdmin[]>{
+    const endpoint = '/admins';
+    const fullUrl = this.baseUrl + endpoint;
+    return this.http.get<IAdmin[]>(fullUrl);
   }
 
   public getUserById(id: string): Observable<IUser> {

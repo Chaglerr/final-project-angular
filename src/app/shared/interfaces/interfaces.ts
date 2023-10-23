@@ -4,6 +4,7 @@ export interface User{
     nickname: string,
     posts: IPost[],
     rating: IRating,
+    isAdmin: boolean,
 }
 
  export interface IRating{
@@ -18,7 +19,8 @@ export interface IUser extends User{
 
 export interface data{
     users: IUser[],
-    currentUserId: string
+    currentUserId: string,
+    isAdmin: boolean,
 }
 
 export interface posts{
@@ -35,4 +37,9 @@ export interface IPost{
     id: string,
     content: string,
     userId: string,
+}
+
+export interface IAdmin{
+    email: string,
+    password: string,
 }

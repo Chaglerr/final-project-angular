@@ -11,12 +11,13 @@ export class AuthorizationService {
   constructor(private http: HttpsService) { }
 
   private liveDataSubject = new BehaviorSubject<data>({
-    users: [{email: "g@gmail.com", password:"paroli11", nickname: "gio", id: "u0", posts: [], rating: {rating: 0 , ratedNum: 0}}], currentUserId: "-1"
+    users: [{email: "g@gmail.com", password:"paroli11", nickname: "gio", id: "u0", posts: [], rating: {rating: 0 , ratedNum: 0}, isAdmin: false}], currentUserId: "-1", isAdmin: false
   });
 
   public currentState = this.liveDataSubject.asObservable();
   public currUserId = "-1";
   private nextId = "";
+  private isAdmin = false;
 
   public async validLoginData(email: string, password: string): Promise<boolean> {
     try {
@@ -24,10 +25,15 @@ export class AuthorizationService {
       if (users) {
         const matchingUser = users.find(user => user.email === email && user.password === password);
         if (matchingUser) {
+          console.log('User is logged in as:', matchingUser.email);
           const previousData = this.liveDataSubject.getValue();
           previousData.currentUserId = matchingUser.id;
           this.liveDataSubject.next(previousData);
           this.currUserId = matchingUser.id;
+          if (matchingUser.isAdmin === true) {
+            console.log('User has admin privileges.');
+            previousData.isAdmin = true;
+          }
           return true;
         }
       }
@@ -47,9 +53,10 @@ export class AuthorizationService {
       ...user,
       posts: [], 
       id: this.nextId,
-      rating: firstRating
+      rating: firstRating,
+      isAdmin: false,
     });
-    this.http.addUser({...user, id: this.nextId, posts: [], rating: firstRating})
+    this.http.addUser({...user, id: this.nextId, posts: [], rating: firstRating, isAdmin: false})
     .subscribe(
     (response) => {
       console.log('Successfully created a new record:', response);
@@ -81,7 +88,7 @@ export class AuthorizationService {
       if(data.users[i].id === id) return data.users[i];
     }
     const dummyRate: IRating = {rating: 0, ratedNum: 0};
-    let dummyUser = {id: "-1", email: "", nickname: "", password: "", posts: [], rating: dummyRate};
+    let dummyUser = {id: "-1", email: "", nickname: "", password: "", posts: [], rating: dummyRate, isAdmin: false};
     return dummyUser;
   }
 
