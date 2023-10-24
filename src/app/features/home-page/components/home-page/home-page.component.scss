@@ -16,59 +16,52 @@ $button-color: royalblue;
         margin: 20px;
         width: 65%;
         display: flex;
-        flex-direction: column;
-        
+        width: 90%;
+        justify-content: space-between;
+        gap: 75px;
         
         .input-area {
-            padding: 15px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-gap: 10px;
-            border: 2px solid #007bff;
-            border-radius: 20px 20px 0 0;
-           
-         
-  
-            select, textarea {
-                padding: 10px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-                font-size: 16px;
-                width: 100%;
-                margin-bottom: 7px;
-            }
+          padding: 20px;
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+          align-items: center;
 
             .button-container {
               display: flex;
-              flex-direction: column;
-
+              margin-top: 65px;
+              width: 100%;
+              
+              justify-content: flex-end;
                 .search-button {
-                  background-color: #007bff;
-                  color: #fff;
-                  border: none;
-                  border-radius: 5px;
-                  padding: 10px 20px;
+                  width: 133px;
+                  height: 43px;
+                  border-radius: 48px;
+                  border: 1px solid #333;
+                  color: #333;
+                  font-family: Nunito;
+                  font-size: 20px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: normal;
                   cursor: pointer;
-                  font-size: 16px;
-                  margin-left: 78px;
-                  margin-top: 19px;
-                  margin-bottom: 20px;
-                  width: 150px;
-                    &:hover {
-                        background-color: #0056b3;
-                    }
                 }
             }
         }
     }
     .posts{
       height: 500px;
-      border: 2px solid #007bff;
-      border-radius: 0 0 20px 20px;
+      
       p {
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 10px;
+        color: #000;
+        font-family: Nunito;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        display: flex;
+        margin-left: 15px;
+        margin-bottom: 40px;
       }
     
       .post-container {
@@ -78,83 +71,40 @@ $button-color: royalblue;
         overflow-y: auto; 
         max-height: 450px;
         scrollbar-width: thin;
-        scrollbar-color: $primary-color $button-color;
+        scrollbar-color: #333 black;
 
         &::-webkit-scrollbar {
           width: 10px; /* Set the width of the scrollbar */
         }
 
         &::-webkit-scrollbar-thumb {
-          background-color: $primary-color; /* Color of the thumb */
+          background-color: #333; /* Color of the thumb */
           border-radius: 5px; /* Rounded corners for the thumb */
         }
 
         &::-webkit-scrollbar-track {
-          background-color: $button-color; /* Color of the track */
+          background-color: black; /* Color of the track */
         }
       }
     }
 }
 
 .post-button {
-  position: relative;
-  width: 130px;
-  height: 35px;
-  border-radius: 30px;
-  background-color: white;
-  border: 1px #08c solid;
-  overflow: hidden;
-  margin-left: 83px;
-  margin-top: 20px;
+  width: 133px;
+  height: 43px;
+  border-radius: 48px;
+  background-color: #333;
+  color: #FFF;
+  font-family: Nunito;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+  margin-left: 25px;
 }
 
-.text1 {
-  font-size: 15px;
-  font-weight: 600;
-  margin-left: 22%;
-}
 
-.text2 {
-  position: absolute;
-  top: 25%;
-  left: -50px;
-  font-weight: 700;
-  font-size: 14px;
-  color: white;
-}
-
-.icon {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: transform 0.5s;
-}
-
-.icon::before {
-  position: absolute;
-  left: -100px;
-  top: 0;
-  z-index: -1;
-  content: '';
-  width: 130px;
-  height: 33px;
-  border-radius: 30px;
-  background-color: #08c;
-}
-
-.post-button:hover .icon {
-  transform: translateX(96px);
-  transition: transform 0.5s;
-}
-
-.post-button:hover .text2 {
-  transform: translateX(100px);
-  transition: transform 0.6s;
-}
-
-.post-button:active {
-  transform: scale(1.03);
-}
 
 
 .advertisement{
@@ -173,12 +123,12 @@ $button-color: royalblue;
 }
 
 .single-post {
+  border-radius: 31px;
+  background: #FFF;
+  box-shadow: 10px 15px 25px 0px rgba(0, 0, 0, 0.25);
   width: calc(50% - 10px); 
   margin-bottom: 10px; 
   display: inline-block;
-  border-radius: 30px;
-  background-color: white;
-  border: 1px #08c solid;
   height: 150px;
   margin-right: 15px;
   position: relative;
@@ -191,65 +141,21 @@ $button-color: royalblue;
 
 .chat-button {
   font-family: inherit;
-  font-size: 18px;
-  background: linear-gradient(to bottom, #4dc7d9 0%, #66a6ff 100%);
-  color: white;
+  font-size: 16px;
+  background-color: white;
   padding: 0.8em 1.2em;
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
-  border-radius: 25px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  color: #000;
   transition: all 0.3s;
   cursor: pointer;
   position: absolute;
   right: 15px;
   height: 40px;
-  width: 110px;
+  width: 150px;
   bottom: 7px;
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
-
-    .svg-wrapper {
-      background-color: rgba(255, 255, 255, 0.5);
-    }
-
-    svg {
-      transform: rotate(45deg);
-    }
-  }
-
-  &:active {
-    transform: scale(0.95);
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  }
-
-  span {
-    display: block;
-    margin-left: 0.4em;
-    transition: all 0.3s;
-  }
-
-  .svg-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.2);
-    margin-right: 0.5em;
-    transition: all 0.3s;
-  }
-
-  svg {
-    width: 18px;
-    height: 18px;
-    fill: white;
-    transition: all 0.3s;
-  }
 }
 
 
@@ -309,4 +215,71 @@ $button-color: royalblue;
       background: lightcoral;
     }
   }
+}
+.form-container{
+  width: 50%;
+  height: 780px;
+  border-radius: 25px;
+  background-color: #F8F8F8;
+  box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.25);
+  select{
+    width: 269px;
+    height: 43px;
+    border-radius: 7px;
+    border: 2px solid #000;
+    background: #FFF;
+    margin-bottom: 40px;
+   
+  }
+}
+
+.single-input{
+  display: flex;
+  flex-direction: column;
+  margin-right: 50px;
+
+}
+
+.one-row-of-inputs{
+  display: flex;
+  flex-direction: row;
+}
+
+.textAreaWrapper{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-right: 63px;
+  textarea{
+    width: 578px;
+    height: 146px;
+    border-radius: 7px;
+    border: 2px solid #000;
+    background: #FFF;
+    padding: 8px;
+    resize: none;
+  }
+}
+
+.label-icon{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 7px;
+}
+
+.form-header{
+  color: #000;
+
+font-family: Nunito;
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin-bottom: 65px;
+}
+
+.dispCont{
+  padding-top: 15px;
 }

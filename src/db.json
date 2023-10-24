@@ -14,6 +14,16 @@
       "id": "6e7e113a-6455-48b5-b8b3-68623e145df2",
       "content": "Hello, my name is tekla. I can teach You physics. I'm available on weekends, prefer in city1, and can communicate in English. Only for 20-40$ per lesson. Additional information: rating tester",
       "userId": "69d84180-6f19-415d-afd4-211911fc5892"
+    },
+    {
+      "id": "8f82fbaf-474c-4e08-a63e-d899ee3ada1a",
+      "content": "Hello, my name is admin. I can teach You math. I'm available on weekdays, prefer in otherCity, and can communicate in Georgian. Only for 0-20$ per lesson. Additional information: as",
+      "userId": "b0ad1370-46b5-4565-a401-679e3a704c7b"
+    },
+    {
+      "id": "ff714b1a-c676-4394-a53c-b655467c7139",
+      "content": "Hello, my name is admin. I want to learn You physics. I'm available on weekends, prefer online, and can communicate in Georgian. Only for 0-20$ per lesson.",
+      "userId": "b0ad1370-46b5-4565-a401-679e3a704c7b"
     }
   ],
   "users": [
@@ -45,8 +55,8 @@
         }
       ],
       "rating": {
-        "rating": 4144416.625,
-        "ratedNum": 8
+        "rating": 3683926.222222222,
+        "ratedNum": 9
       }
     },
     {
@@ -64,8 +74,8 @@
         }
       ],
       "rating": {
-        "rating": 3.5,
-        "ratedNum": 2
+        "rating": 3.75,
+        "ratedNum": 4
       }
     },
     {
@@ -86,10 +96,21 @@
       "email": "admin@gmail.com",
       "password": "admin123",
       "confirmpassword": "admin123",
-      "nickname": "admin",
+      "nickname": "admin12",
       "agreement": true,
       "id": "b0ad1370-46b5-4565-a401-679e3a704c7b",
-      "posts": [],
+      "posts": [
+        {
+          "content": "Hello, my name is admin. I can teach You math. I'm available on weekdays, prefer in otherCity, and can communicate in Georgian. Only for 0-20$ per lesson. Additional information: as",
+          "id": "8f82fbaf-474c-4e08-a63e-d899ee3ada1a",
+          "userId": "b0ad1370-46b5-4565-a401-679e3a704c7b"
+        },
+        {
+          "content": "Hello, my name is admin. I want to learn You physics. I'm available on weekends, prefer online, and can communicate in Georgian. Only for 0-20$ per lesson.",
+          "id": "ff714b1a-c676-4394-a53c-b655467c7139",
+          "userId": "b0ad1370-46b5-4565-a401-679e3a704c7b"
+        }
+      ],
       "rating": {
         "rating": 0,
         "ratedNum": 0

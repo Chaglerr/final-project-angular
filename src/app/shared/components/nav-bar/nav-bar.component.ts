@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -8,7 +8,8 @@ import { AuthorizationService } from '../../services/authorization-services/auth
   standalone: true,
   imports: [CommonModule],
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.scss']
+  styleUrls: ['./nav-bar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavBarComponent{
 
@@ -16,11 +17,12 @@ export class NavBarComponent{
   private subscription: Subscription | undefined;
   public isAdmin: boolean = false;
   
-  constructor(private router: Router, private userControl: AuthorizationService){
+  constructor(private router: Router, private userControl: AuthorizationService, private cdr: ChangeDetectorRef){
     userControl.currentState.subscribe(
       (data) => {
         this.loggedIn = (data.currentUserId == "-1" ? false : true);
         this.isAdmin = data.isAdmin; 
+        this.cdr.markForCheck();
       }
     );
   };
@@ -31,6 +33,7 @@ export class NavBarComponent{
     this.subscription = this.userControl.currentState.subscribe((userState)=>{
       userState.currentUserId === "-1" ? this.loggedIn = false : this.loggedIn = true;
       this.isAdmin = userState.isAdmin;
+      this.cdr.markForCheck();
     })
     console.log(this.loggedIn);
     console.log(this.isAdmin);

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { passwordMatch,  validateNickname, customPassValidator } from '../../../../shared/validators/validators';
 import { FormBuilder, FormControl, ValidationErrors, Validators, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -11,7 +11,8 @@ import { User } from 'src/app/shared/interfaces/interfaces';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss']
+  styleUrls: ['./registration.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegistrationComponent {
   constructor(public formBuilder: FormBuilder,  public router: Router, 

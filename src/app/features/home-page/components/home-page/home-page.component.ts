@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { customPassValidator } from 'src/app/shared/validators/validators';
@@ -11,7 +11,8 @@ import { PostsService } from '../../services/posts-services/posts.service';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss']
+  styleUrls: ['./home-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomePageComponent {
   
@@ -23,7 +24,7 @@ export class HomePageComponent {
   selectedRating: string;
   selectedUser: IUser;
 
-  constructor(public formBuilder: FormBuilder, public userControl: AuthorizationService, private http: HttpsService, private postsService: PostsService){
+  constructor(private cdr: ChangeDetectorRef, public formBuilder: FormBuilder, public userControl: AuthorizationService, private http: HttpsService, private postsService: PostsService){
     this.displayedPosts = [];
     this.detailedData = [];
     this.loggedInId = "";
@@ -52,6 +53,7 @@ export class HomePageComponent {
     this.http.getUserById(this.loggedInId).subscribe(
       (user: IUser) => {
         this.loggedInUser = user;
+        this.cdr.markForCheck();
       },
       (error) => {
         console.error('Error while getting user:', error);
@@ -61,6 +63,7 @@ export class HomePageComponent {
       (posts: IPost[]) => {
         this.postsService.posts = posts;
         this.displayedPosts = this.postsService.getPostsToDisplay();
+        this.cdr.markForCheck();
       },
       (error) => {
         console.error('Error while getting posts:', error);
@@ -148,6 +151,7 @@ export class HomePageComponent {
             this.detailedData.push(foundUser.email);
             this.detailedData.push(foundUser.rating.rating.toString());
             this.detailedData.push(foundUser.rating.ratedNum.toString());
+            this.cdr.markForCheck();
           }
         });
   }

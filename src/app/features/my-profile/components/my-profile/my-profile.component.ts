@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthorizationService } from 'src/app/shared/services/authorization-services/authorization.service';
 import { IPost, IUser, User } from 'src/app/shared/interfaces/interfaces';
@@ -12,7 +12,8 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './my-profile.component.html',
-  styleUrls: ['./my-profile.component.scss']
+  styleUrls: ['./my-profile.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MyProfileComponent {
   
@@ -20,7 +21,7 @@ export class MyProfileComponent {
   currUserId: string = "-1";
   userData: IUser = {id: "-1", email: "", nickname: "", password: "", posts: [], rating: {ratedNum: 0, rating: 0}, isAdmin: false};
   
-  constructor(public userControl: AuthorizationService, private http: HttpsService, public formBuilder: FormBuilder, private router: Router){}
+  constructor(private cdr: ChangeDetectorRef, public userControl: AuthorizationService, private http: HttpsService, public formBuilder: FormBuilder, private router: Router){}
 
   
   public updateForm = this.formBuilder.group({
@@ -47,6 +48,7 @@ export class MyProfileComponent {
       (user: IUser) => {
         console.log('User Data:', user);
         this.userData = user;
+        this.cdr.markForCheck();
       },
       (error) => {
         console.error('Error:', error);
@@ -96,7 +98,9 @@ export class MyProfileComponent {
         console.log(`Post with ID ${id} not found in selectedUser's posts.`);
       }
     }
-    this.fetchData();
+    setTimeout(() => {
+      this.fetchData();
+    }, 2000);
   }
 
 
@@ -114,7 +118,9 @@ export class MyProfileComponent {
       
       const updatedIUser = {...updatedUser, id: index};
       this.http.updateUserPosts(index, updatedIUser);
-      this.fetchData();
+      setTimeout(() => {
+        this.fetchData();
+      }, 1000);
       this.updateForm.reset();
       this.isEditing = false;
     }

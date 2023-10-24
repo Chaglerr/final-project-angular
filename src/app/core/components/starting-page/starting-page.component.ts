@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
@@ -7,7 +7,8 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './starting-page.component.html',
-  styleUrls: ['./starting-page.component.scss']
+  styleUrls: ['./starting-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StartingPageComponent {
 
