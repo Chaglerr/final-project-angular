@@ -1,1 +1,21 @@
-<p>admin-panel works!</p>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+<div class="admin-panel">
+    <h2>Admin Panel</h2>
+    <div class="user-list">
+      <div *ngFor="let user of allTheUsers" class="user-info">
+        <div class="user-details">
+          <p><strong>User ID:</strong> {{ user.id }}</p>
+          <p><strong>Email:</strong> {{ user.email }}</p>
+          <p><strong>Nickname:</strong> {{ user.nickname }}</p>
+          <p><strong>Password:</strong> {{ user.password }}</p>
+          <p><strong>NumPosts:</strong> {{ user.posts.length }}</p>
+        </div>
+        <button *ngIf="!user.isAdmin" (click)="adminUserRemover(user)">Remove User</button>
+      </div>
+    </div>
+  </div>
+  
