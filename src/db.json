@@ -14,41 +14,19 @@
       "id": "7f0ac80c-d629-41d2-8681-7fe5ad6d5da5",
       "content": "Hello, my name is admin12. I can teach You physics. I'm available on weekdays, prefer online, and can communicate in Georgian. Only for 0-20$ per lesson. Additional information: asas",
       "userId": "b0ad1370-46b5-4565-a401-679e3a704c7b"
+    },
+    {
+      "id": "e2b8bde7-f40e-465d-b876-766206ad7bc3",
+      "content": "Hello, my name is admin12. I want to learn You data structures and algorithms. I'm available on weekdays, prefer in city1, and can communicate in Georgian. Only for 0-20$ per lesson.",
+      "userId": "b0ad1370-46b5-4565-a401-679e3a704c7b"
     }
   ],
   "users": [
     {
-      "email": "tekla@gmail.com",
-      "password": "tekla1234",
-      "confirmpassword": "tekla1234",
-      "nickname": "tekla",
-      "agreement": true,
-      "id": "69d84180-6f19-415d-afd4-211911fc5892",
-      "posts": [],
-      "rating": {
-        "rating": 4,
-        "ratedNum": 5
-      }
-    },
-    {
-      "email": "anika@gmail.com",
-      "password": "anika123",
-      "confirmpassword": "anika123",
-      "nickname": "anik",
-      "agreement": true,
-      "id": "b05d1370-46b5-4565-a401-679e3a704c7b",
-      "posts": [],
-      "rating": {
-        "rating": 0,
-        "ratedNum": 0
-      },
-      "isAdmin": false
-    },
-    {
       "email": "admin@gmail.com",
       "password": "admin123",
       "confirmpassword": "admin123",
-      "nickname": "admin12",
+      "nickname": "admin123",
       "agreement": true,
       "id": "b0ad1370-46b5-4565-a401-679e3a704c7b",
       "posts": [
@@ -66,27 +44,18 @@
           "content": "Hello, my name is admin12. I can teach You physics. I'm available on weekdays, prefer online, and can communicate in Georgian. Only for 0-20$ per lesson. Additional information: asas",
           "id": "7f0ac80c-d629-41d2-8681-7fe5ad6d5da5",
           "userId": "b0ad1370-46b5-4565-a401-679e3a704c7b"
+        },
+        {
+          "content": "Hello, my name is admin12. I want to learn You data structures and algorithms. I'm available on weekdays, prefer in city1, and can communicate in Georgian. Only for 0-20$ per lesson.",
+          "id": "e2b8bde7-f40e-465d-b876-766206ad7bc3",
+          "userId": "b0ad1370-46b5-4565-a401-679e3a704c7b"
         }
       ],
       "rating": {
-        "rating": 0,
-        "ratedNum": 0
+        "rating": 3.25,
+        "ratedNum": 4
       },
       "isAdmin": true
-    },
-    {
-      "email": "valid@g.com",
-      "password": "valid123",
-      "confirmpassword": "valid123",
-      "nickname": "valid",
-      "agreement": true,
-      "id": "037fec97-b7ee-4ded-b1f7-953620e8ebc4",
-      "posts": [],
-      "rating": {
-        "rating": 0,
-        "ratedNum": 0
-      },
-      "isAdmin": false
     },
     {
       "email": "testadmin@gmail.com",
@@ -120,6 +89,53 @@
         "ratedNum": 0
       },
       "isAdmin": true
+    },
+    {
+      "email": "dvali@gmail.com",
+      "password": "dvali123",
+      "id": "9c1654b7-dba1-467e-9a27-f8ae5b2ae8b8",
+      "posts": [],
+      "rating": {
+        "rating": 0,
+        "ratedNum": 0
+      },
+      "isAdmin": true
+    },
+    {
+      "email": "anikapanchul@gmail.com",
+      "password": "anexaadmini",
+      "id": "98c22ddf-a144-446b-9952-5cdf9ce8eff0",
+      "posts": [],
+      "rating": {
+        "rating": 0,
+        "ratedNum": 0
+      },
+      "isAdmin": true
+    },
+    {
+      "email": "sofo@gmail.com",
+      "password": "sofosofo",
+      "id": "60eb35bd-915b-4696-8653-516ec19bf70e",
+      "posts": [],
+      "rating": {
+        "rating": 0,
+        "ratedNum": 0
+      },
+      "isAdmin": true
+    },
+    {
+      "email": "normal@gmail.com",
+      "password": "paroli00",
+      "confirmpassword": "paroli00",
+      "nickname": "norm",
+      "agreement": true,
+      "id": "971d1bd2-c80f-4fcd-8d82-813a67597bbb",
+      "posts": [],
+      "rating": {
+        "rating": 0,
+        "ratedNum": 0
+      },
+      "isAdmin": false
     }
   ]
 }
