@@ -30,12 +30,12 @@ export const ROUTES: Routes = [
         loadComponent: ()=> import('../../../features/my-profile/components/my-profile/my-profile.component').then(m => m.MyProfileComponent),
     },
     {
-        path: '**', 
-        loadComponent: ()=>import('../starting-page/starting-page.component').then(m => m.StartingPageComponent),
-    },
-    {
         path: 'adminpanel',
         //canActivate: [loggedIn],
-        loadComponent: ()=>import('../../../features/admin-panel/components/admin-panel/admin-panel.component').then(m => m.AdminPanelComponent),
+        loadComponent: ()=> import('../../../features/admin-panel/components/admin-panel/admin-panel.component').then(m => m.AdminPanelComponent),
+    },
+    {
+        path: '**', 
+        loadComponent: ()=>import('../starting-page/starting-page.component').then(m => m.StartingPageComponent),
     }
 ];

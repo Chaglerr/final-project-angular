@@ -27,8 +27,6 @@ export class NavBarComponent{
     this.subscription = this.userControl.currentState.subscribe((userState)=>{
       userState.currentUserId === "-1" ? this.loggedIn = false : this.loggedIn = true;
       this.isAdmin = userState.isAdmin;
-      console.log(this.loggedIn);
-      console.log(this.isAdmin);
       this.cdr.markForCheck();
     })
    
@@ -59,6 +57,10 @@ export class NavBarComponent{
 
   public redirectToMyProfile(): void{
     this.router.navigate(['/myprofile']);
+  }
+
+  public redirectToAdminPanel(): void{
+    this.router.navigate(['/adminpanel']);
   }
 
   public logOut(): void{

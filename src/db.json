@@ -24,6 +24,11 @@
       "id": "ff714b1a-c676-4394-a53c-b655467c7139",
       "content": "Hello, my name is admin. I want to learn You physics. I'm available on weekends, prefer online, and can communicate in Georgian. Only for 0-20$ per lesson.",
       "userId": "b0ad1370-46b5-4565-a401-679e3a704c7b"
+    },
+    {
+      "id": "7f0ac80c-d629-41d2-8681-7fe5ad6d5da5",
+      "content": "Hello, my name is admin12. I can teach You physics. I'm available on weekdays, prefer online, and can communicate in Georgian. Only for 0-20$ per lesson. Additional information: asas",
+      "userId": "b0ad1370-46b5-4565-a401-679e3a704c7b"
     }
   ],
   "users": [
@@ -74,8 +79,8 @@
         }
       ],
       "rating": {
-        "rating": 3.75,
-        "ratedNum": 4
+        "rating": 4,
+        "ratedNum": 5
       }
     },
     {
@@ -108,6 +113,11 @@
         {
           "content": "Hello, my name is admin. I want to learn You physics. I'm available on weekends, prefer online, and can communicate in Georgian. Only for 0-20$ per lesson.",
           "id": "ff714b1a-c676-4394-a53c-b655467c7139",
+          "userId": "b0ad1370-46b5-4565-a401-679e3a704c7b"
+        },
+        {
+          "content": "Hello, my name is admin12. I can teach You physics. I'm available on weekdays, prefer online, and can communicate in Georgian. Only for 0-20$ per lesson. Additional information: asas",
+          "id": "7f0ac80c-d629-41d2-8681-7fe5ad6d5da5",
           "userId": "b0ad1370-46b5-4565-a401-679e3a704c7b"
         }
       ],
