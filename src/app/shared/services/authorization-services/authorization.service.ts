@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IRating, IUser, User, data } from '../../interfaces/interfaces';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, flatMap, map, of } from 'rxjs';
 import { HttpsService } from '../http/https.service';
 
 @Injectable({
@@ -18,55 +18,72 @@ export class AuthorizationService {
   public currUserId = "-1";
   private nextId = "";
   private isAdmin = false;
+  private errorSubject = new BehaviorSubject<string>(''); 
+  public error$ = this.errorSubject.asObservable();
+  private errorSubjectLogin = new BehaviorSubject<string>(''); 
+  public errorLogin$ = this.errorSubjectLogin.asObservable();
 
-  public async validLoginData(email: string, password: string): Promise<boolean> {
-    try {
-      const users: IUser[] | undefined = await this.http.getUsers().toPromise();
-      if (users) {
-        const matchingUser = users.find(user => user.email === email && user.password === password);
-        if (matchingUser) {
-          console.log('User is logged in as:', matchingUser.email);
-          const previousData = this.liveDataSubject.getValue();
-          previousData.currentUserId = matchingUser.id;
-          this.liveDataSubject.next(previousData);
-          this.currUserId = matchingUser.id;
-          if (matchingUser.isAdmin === true) {
-            console.log('User has admin privileges.');
-            previousData.isAdmin = true;
+  public  validLoginData(email: string, password: string) {
+      return this.http.getUsers().pipe(
+        map(
+          (users) => {
+            if (users) {
+              const matchingUser = users.find(user => user.email === email && user.password === password);
+              if (matchingUser) {
+                console.log('User is logged in as:', matchingUser.email);
+                const previousData = this.liveDataSubject.getValue();
+                previousData.currentUserId = matchingUser.id;
+                
+                this.currUserId = matchingUser.id;
+                if (matchingUser.isAdmin === true) {
+                  console.log('User has admin privileges.');
+                  previousData.isAdmin = true;
+                }
+                this.liveDataSubject.next(previousData);
+                return true;
+              }
+            }
+            this.currUserId = "-1";
+            this.errorSubjectLogin.next('Invalid Email or Password');
+            return  false;
           }
-          return true;
-        }
-      }
-      this.currUserId = "-1";
-      return false;
-    } catch (error) {
-      console.error('Error during login:', error);
-      return false;
-    }
+          
+        ))
+         
   }
    
   public registerUser(user: User): void {
     const data = this.liveDataSubject.getValue();
-    this.nextId = `${crypto.randomUUID()}`;
-    const firstRating: IRating = {rating: 0, ratedNum: 0};
-    data.users.push({
-      ...user,
-      posts: [], 
-      id: this.nextId,
-      rating: firstRating,
-      isAdmin: false,
+  
+    // Fetch the list of users and check if the email already exists
+    this.http.getUsers().subscribe((existingUsers) => {
+      const emailExists = existingUsers.some((existingUser) => existingUser.email === user.email);
+      if (emailExists) {
+        // Emit an error message if the email already exists
+        this.errorSubject.next('User with the same email already exists.');
+      } else {
+        this.nextId = `${crypto.randomUUID()}`;
+        const firstRating: IRating = { rating: 0, ratedNum: 0 };
+        data.users.push({
+          ...user,
+          posts: [],
+          id: this.nextId,
+          rating: firstRating,
+          isAdmin: false,
+        });
+        this.http.addUser({ ...user, id: this.nextId, posts: [], rating: firstRating, isAdmin: false })
+          .subscribe(
+            (response) => {
+              console.log('Successfully created a new record:', response);
+            },
+            (error) => {
+              console.error('Error creating a new record:', error);
+              this.errorSubject.next('Invalid Info ' + error);
+            }
+          );
+        this.liveDataSubject.next(data);
+      }
     });
-    this.http.addUser({...user, id: this.nextId, posts: [], rating: firstRating, isAdmin: false})
-    .subscribe(
-    (response) => {
-      console.log('Successfully created a new record:', response);
-    },
-    (error) => {
-      console.error('Error creating a new record:', error);
-    }
-  );
-    this.liveDataSubject.next(data);
-    //this.printdata();
   }
 
   private printdata(){
@@ -79,6 +96,7 @@ export class AuthorizationService {
   public logOut(): void{
     const previousData = this.liveDataSubject.getValue();
     previousData.currentUserId = "-1";
+    previousData.isAdmin = false;
     this.liveDataSubject.next(previousData);
   }
 

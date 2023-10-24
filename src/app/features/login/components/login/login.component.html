@@ -14,6 +14,9 @@
         <label>Password:
             <input formControlName="password" type="password">
         </label>
+        
+        <div *ngIf="isError" class="error-message">{{ errorMessage }}</div>
+
         <button type="submit" [disabled]="!loginForm.valid" (click)="login()">Log In</button>
     </form>      
     </div>

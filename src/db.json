@@ -116,6 +116,34 @@
         "ratedNum": 0
       },
       "isAdmin": true
+    },
+    {
+      "email": "mail@m.com",
+      "password": "paroli88",
+      "confirmpassword": "paroli88",
+      "nickname": "mail",
+      "agreement": true,
+      "id": "ab977c53-2455-473f-92d4-0b1b8ec614ce",
+      "posts": [],
+      "rating": {
+        "rating": 0,
+        "ratedNum": 0
+      },
+      "isAdmin": false
+    },
+    {
+      "email": "valid@g.com",
+      "password": "valid123",
+      "confirmpassword": "valid123",
+      "nickname": "valid",
+      "agreement": true,
+      "id": "037fec97-b7ee-4ded-b1f7-953620e8ebc4",
+      "posts": [],
+      "rating": {
+        "rating": 0,
+        "ratedNum": 0
+      },
+      "isAdmin": false
     }
   ]
 }

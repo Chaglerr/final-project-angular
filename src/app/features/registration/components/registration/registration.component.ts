@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { passwordMatch,  validateNickname, customPassValidator } from '../../../../shared/validators/validators';
 import { FormBuilder, FormControl, ValidationErrors, Validators, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -16,7 +16,11 @@ import { User } from 'src/app/shared/interfaces/interfaces';
 })
 export class RegistrationComponent {
   constructor(public formBuilder: FormBuilder,  public router: Router, 
-    private userControl: AuthorizationService, private http: HttpsService){}
+    private userControl: AuthorizationService, private http: HttpsService,
+    private cdr: ChangeDetectorRef){}
+
+    errorMessage: string = ''; 
+    isError: boolean = false; 
 
   public registerForm = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
@@ -28,7 +32,14 @@ export class RegistrationComponent {
 
   public registration(): void{ 
     if(!this.registerForm.valid) return;
+
     this.userControl.registerUser(this.registerForm.value as User);
+    this.userControl.error$.subscribe((error) => {
+      this.errorMessage = error;
+      this.isError = true;
+      this.cdr.markForCheck();
+    });
+    if(this.isError) return;
     this.registerForm.reset();
     this.router.navigate(['/login']);
   }
