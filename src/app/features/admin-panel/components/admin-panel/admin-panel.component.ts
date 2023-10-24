@@ -1,15 +1,16 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IUser } from 'src/app/shared/interfaces/interfaces';
+import { IUser, User } from 'src/app/shared/interfaces/interfaces';
 import { AuthorizationService } from 'src/app/shared/services/authorization-services/authorization.service';
 import { HttpsService } from 'src/app/shared/services/http/https.service';
+import { customPassValidator } from 'src/app/shared/validators/validators';
 
 @Component({
   selector: 'app-admin-panel',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './admin-panel.component.html',
   styleUrls: ['./admin-panel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -21,6 +22,11 @@ export class AdminPanelComponent {
   userData: IUser = {id: "-1", email: "", nickname: "", password: "", posts: [], rating: {ratedNum: 0, rating: 0}, isAdmin: false};
   selectedUser: IUser | null = null;
   allTheUsers: IUser[] = [];
+
+  public addAdminForm = this.formBuilder.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(8), customPassValidator]],
+  });
 
 
   constructor(private cdr: ChangeDetectorRef, public userControl: AuthorizationService, private http: HttpsService, public formBuilder: FormBuilder, private router: Router){}
@@ -72,8 +78,18 @@ export class AdminPanelComponent {
 
   public adminUserRemover(user: IUser){
     this.selectedUser = user;
-    console.log(this.selectedUser);
-    
+    console.log(this.selectedUser);   
     this.removeUserAndPosts();
   }
+
+  public addAdmin(){
+    if(!this.addAdminForm.valid) return;
+    this.userControl.registerAdmin(this.addAdminForm.value as User);
+    this.addAdminForm.reset();
+    setTimeout(() => {
+      this.fetchData();
+    }, 2000);
+  }
+
+
 }

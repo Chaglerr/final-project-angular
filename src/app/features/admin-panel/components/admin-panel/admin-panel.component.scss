@@ -10,13 +10,14 @@
     h2 {
       font-size: 24px;
       margin-bottom: 20px;
+      margin-top: 20px;
     }
   
     .user-list {
       width: 100%;
       max-width: 600px;
-      max-height: 800px; /* Set your desired max height */
-      overflow-y: auto; /* Enable vertical scrolling */
+      max-height: 800px; 
+      overflow-y: auto; 
   
       .user-info {
         display: flex;
@@ -47,6 +48,62 @@
             background-color: #cc0000;
           }
         }
+      }
+    }
+  }
+  
+  .wrapper{ 
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+}
+
+.addAdmin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+  .adminAddForm {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+  
+    h2 {
+      font-size: 24px;
+      margin: 0 0 20px;
+    }
+  
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+  
+      input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+    }
+  
+    button {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 18px;
+      width: 100%;
+      margin-top: 10px;
+  
+      &:hover {
+        background-color: #0056b3;
       }
     }
   }

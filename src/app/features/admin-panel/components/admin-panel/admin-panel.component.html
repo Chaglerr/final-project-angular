@@ -5,17 +5,34 @@
 
 <div class="admin-panel">
     <h2>Admin Panel</h2>
-    <div class="user-list">
-      <div *ngFor="let user of allTheUsers" class="user-info">
-        <div class="user-details">
-          <p><strong>User ID:</strong> {{ user.id }}</p>
-          <p><strong>Email:</strong> {{ user.email }}</p>
-          <p><strong>Nickname:</strong> {{ user.nickname }}</p>
-          <p><strong>Password:</strong> {{ user.password }}</p>
-          <p><strong>NumPosts:</strong> {{ user.posts.length }}</p>
-        </div>
-        <button *ngIf="!user.isAdmin" (click)="adminUserRemover(user)">Remove User</button>
-      </div>
+    <div class="wrapper">
+        <div class="user-list">
+            <div *ngFor="let user of allTheUsers" class="user-info">
+              <div class="user-details">
+                <p><strong>User ID:</strong> {{ user.id }}</p>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                <p><strong>Nickname:</strong> {{ user.nickname }}</p>
+                <p><strong>Password:</strong> {{ user.password }}</p>
+                <p><strong>NumPosts:</strong> {{ user.posts.length }}</p>
+              </div>
+              <button *ngIf="!user.isAdmin" (click)="adminUserRemover(user)">Remove User</button>
+            </div>
+          </div>
+
+          <div class="addAdmin">
+            <form class="adminAddForm" [formGroup]="addAdminForm">
+                <h2>Add Admin</h2>
+                <label>E-mail:
+                    <input formControlName="email" type="email">
+                </label>
+                <label>Password:
+                    <input formControlName="password" type="password">
+                </label>
+
+                <button type="submit" [disabled]="!addAdminForm.valid" (click)="addAdmin()">Submit</button>
+            </form> 
+          </div>
     </div>
+    
   </div>
   

@@ -86,6 +86,43 @@ export class AuthorizationService {
     });
   }
 
+  public registerAdmin(user: User): void {
+    const data = this.liveDataSubject.getValue();
+  
+    // Fetch the list of users and check if the email already exists
+    this.http.getUsers().subscribe((existingUsers) => {
+      const emailExists = existingUsers.some((existingUser) => existingUser.email === user.email);
+      if (emailExists) {
+        // Emit an error message if the email already exists
+        this.errorSubject.next('User with the same email already exists.');
+      } else {
+        this.nextId = `${crypto.randomUUID()}`;
+        const firstRating: IRating = { rating: 0, ratedNum: 0 };
+        data.users.push({
+          ...user,
+          posts: [],
+          id: this.nextId,
+          rating: firstRating,
+          isAdmin: true,
+        });
+        this.http.addUser({ ...user, id: this.nextId, posts: [], rating: firstRating, isAdmin: true })
+          .subscribe(
+            (response) => {
+              console.log('Successfully created a new record:', response);
+            },
+            (error) => {
+              console.error('Error creating a new record:', error);
+              this.errorSubject.next('Invalid Info ' + error);
+            }
+          );
+        this.liveDataSubject.next(data);
+      }
+    });
+  }
+
+
+
+
   private printdata(){
     const data = this.liveDataSubject.getValue();
     for(let i = 0; i < data.users.length; i++){
