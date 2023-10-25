@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -17,6 +17,8 @@ export class NavBarComponent{
   private subscription: Subscription | undefined;
   public isAdmin: boolean = false;
   
+  isMobileMenuOpen: boolean = false;
+  isWideScreen: boolean = true;
   constructor(private router: Router, private userControl: AuthorizationService, private cdr: ChangeDetectorRef){
     
   };
@@ -24,6 +26,7 @@ export class NavBarComponent{
 
   
   ngOnInit(): void {
+    this.checkScreenWidth();
     this.subscription = this.userControl.currentState.subscribe((userState)=>{
       userState.currentUserId === "-1" ? this.loggedIn = false : this.loggedIn = true;
       this.isAdmin = userState.isAdmin;
@@ -31,6 +34,18 @@ export class NavBarComponent{
     })
    
     
+  }
+  toggleMobileMenu(){
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    this.checkScreenWidth();
+  }
+
+  checkScreenWidth(): void {
+    this.isWideScreen = window.innerWidth > 768; // Adjust the breakpoint as needed
   }
 
   

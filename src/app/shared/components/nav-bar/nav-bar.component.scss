@@ -123,9 +123,16 @@
       color: inherit;
     }
   }
-  
-  .adminDiv{
-    width: 100px;
-    height: 100px;
-    background-color: red;
+
+  .mobile-menu-icon{
+    width: 40px;
+  }
+
+  .mobile-menu{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 75px;
+    gap: 10px;
+    right: 2px;
   }
