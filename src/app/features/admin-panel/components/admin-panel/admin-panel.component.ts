@@ -29,7 +29,13 @@ export class AdminPanelComponent {
   });
 
 
-  constructor(private cdr: ChangeDetectorRef, public userControl: AuthorizationService, private http: HttpsService, public formBuilder: FormBuilder, private router: Router){}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    public userControl: AuthorizationService, 
+    private http: HttpsService, 
+    public formBuilder: FormBuilder, 
+    private router: Router
+  ){};
 
   ngOnInit(){
     this.fetchData();

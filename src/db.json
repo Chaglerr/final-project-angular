@@ -1,11 +1,6 @@
 {
   "posts": [
     {
-      "id": "8f82fbaf-474c-4e08-a63e-d899ee3ada1a",
-      "content": "Hello, my name is admin. I can teach You math. I'm available on weekdays, prefer in otherCity, and can communicate in Georgian. Only for 0-20$ per lesson. Additional information: as",
-      "userId": "b0ad1370-46b5-4565-a401-679e3a704c7b"
-    },
-    {
       "id": "ff714b1a-c676-4394-a53c-b655467c7139",
       "content": "Hello, my name is admin. I want to learn You physics. I'm available on weekends, prefer online, and can communicate in Georgian. Only for 0-20$ per lesson.",
       "userId": "b0ad1370-46b5-4565-a401-679e3a704c7b"
@@ -30,11 +25,6 @@
       "agreement": true,
       "id": "b0ad1370-46b5-4565-a401-679e3a704c7b",
       "posts": [
-        {
-          "content": "Hello, my name is admin. I can teach You math. I'm available on weekdays, prefer in otherCity, and can communicate in Georgian. Only for 0-20$ per lesson. Additional information: as",
-          "id": "8f82fbaf-474c-4e08-a63e-d899ee3ada1a",
-          "userId": "b0ad1370-46b5-4565-a401-679e3a704c7b"
-        },
         {
           "content": "Hello, my name is admin. I want to learn You physics. I'm available on weekends, prefer online, and can communicate in Georgian. Only for 0-20$ per lesson.",
           "id": "ff714b1a-c676-4394-a53c-b655467c7139",

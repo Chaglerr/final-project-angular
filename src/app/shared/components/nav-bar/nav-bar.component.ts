@@ -19,9 +19,11 @@ export class NavBarComponent{
   
   isMobileMenuOpen: boolean = false;
   isWideScreen: boolean = true;
-  constructor(private router: Router, private userControl: AuthorizationService, private cdr: ChangeDetectorRef){
-    
-  };
+  constructor(
+    private router: Router, 
+    private userControl: AuthorizationService, 
+    private cdr: ChangeDetectorRef
+  ){};
   
 
   
@@ -45,7 +47,7 @@ export class NavBarComponent{
   }
 
   checkScreenWidth(): void {
-    this.isWideScreen = window.innerWidth > 768; // Adjust the breakpoint as needed
+    this.isWideScreen = window.innerWidth > 768; 
   }
 
   

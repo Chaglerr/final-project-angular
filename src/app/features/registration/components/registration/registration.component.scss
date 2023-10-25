@@ -27,6 +27,10 @@ h1 {
     justify-content: center;
     margin-left: 13%;
     margin-top: 85px;
+    @media (max-width: 1000px) {
+      margin-left: 25%;
+      align-items: center;
+    }
 }
 .register-form {
     display: flex;
@@ -101,6 +105,9 @@ h1 {
     width: 50%; /* Adjust the width as needed */
     height: 90.5vh;
     object-fit: cover; /* Ensure the image covers the entire space */
+    @media (max-width: 1000px) {
+      display: none; 
+    }
 }
 
 .error-message{

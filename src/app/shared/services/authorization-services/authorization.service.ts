@@ -8,7 +8,14 @@ import { HttpsService } from '../http/https.service';
 })
 export class AuthorizationService {
 
-  constructor(private http: HttpsService) { }
+  constructor(private http: HttpsService) {
+    // Check if the user is already logged in when the service is initialized
+    const storedUser = localStorage.getItem('loggedInUser');
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      this.restoreLoggedInUser(user);
+    }
+  }
 
   private liveDataSubject = new BehaviorSubject<data>({
     users: [{email: "g@gmail.com", password:"paroli11", nickname: "gio", id: "u0", posts: [], rating: {rating: 0 , ratedNum: 0}, isAdmin: false}], currentUserId: "-1", isAdmin: false
@@ -23,34 +30,30 @@ export class AuthorizationService {
   private errorSubjectLogin = new BehaviorSubject<string>(''); 
   public errorLogin$ = this.errorSubjectLogin.asObservable();
 
-  public  validLoginData(email: string, password: string) {
-      return this.http.getUsers().pipe(
-        map(
-          (users) => {
-            if (users) {
-              const matchingUser = users.find(user => user.email === email && user.password === password);
-              if (matchingUser) {
-                console.log('User is logged in as:', matchingUser.email);
-                const previousData = this.liveDataSubject.getValue();
-                previousData.currentUserId = matchingUser.id;
-                
-                this.currUserId = matchingUser.id;
-                if (matchingUser.isAdmin === true) {
-                  console.log('User has admin privileges.');
-                  previousData.isAdmin = true;
-                }
-                this.liveDataSubject.next(previousData);
-                return true;
-              }
-            }
-            this.currUserId = "-1";
-            this.errorSubjectLogin.next('Invalid Email or Password');
-            return  false;
+  public validLoginData(email: string, password: string) {
+    return this.http.getUsers().pipe(
+      map((users) => {
+        if (users) {
+          const matchingUser = users.find(user => user.email === email && user.password === password);
+          if (matchingUser) {
+            console.log('User is logged in as:', matchingUser.email);
+
+            // Store user data in local storage
+            localStorage.setItem('loggedInUser', JSON.stringify(matchingUser));
+
+            this.restoreLoggedInUser(matchingUser);
+            return true;
           }
-          
-        ))
-         
+        }
+        this.currUserId = "-1";
+        this.errorSubjectLogin.next('Invalid Email or Password');
+        return false;
+      })
+    );
   }
+
+
+  
    
   public registerUser(user: User): void {
     const data = this.liveDataSubject.getValue();
@@ -130,7 +133,8 @@ export class AuthorizationService {
     }
   }
 
-  public logOut(): void{
+  public logOut(): void {
+    localStorage.removeItem('loggedInUser'); // Remove user data from local storage
     const previousData = this.liveDataSubject.getValue();
     previousData.currentUserId = "-1";
     previousData.isAdmin = false;
@@ -147,5 +151,18 @@ export class AuthorizationService {
     return dummyUser;
   }
 
-  
+  private restoreLoggedInUser(user: IUser) {
+    // Update the service's state to reflect the logged-in user
+    const previousData = this.liveDataSubject.getValue();
+    previousData.currentUserId = user.id;
+    this.currUserId = user.id;
+    if (user.isAdmin === true) {
+      console.log('User has admin privileges.');
+      previousData.isAdmin = true;
+    }
+    this.liveDataSubject.next(previousData);
+  }
+
+
+
 }

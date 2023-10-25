@@ -8,8 +8,12 @@ import { Observable, catchError, mergeMap, throwError } from 'rxjs';
 })
 export class HttpsService {
 
-  constructor(private http: HttpClient) {}
-  baseUrl: string = "http://localhost:3000";
+  public baseUrl: string;
+  
+  public constructor(private http: HttpClient) {
+    this.baseUrl =  "http://localhost:3000";
+  }
+  
 
   public addUser(user: IUser){
     const endpoint = '/users';
