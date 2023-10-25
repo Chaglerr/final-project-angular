@@ -16,8 +16,35 @@
   .user-list {
     width: 100%;
     max-width: 600px;
-    max-height: 800px;
+    max-height: 600px;
     overflow-y: auto;
+    
+    &::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    
+    &::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 6px;
+    }
+
+   
+    &::-webkit-scrollbar-track:hover {
+      background: #eee;
+    }
+
+   
+    &::-webkit-scrollbar-thumb:hover {
+      background: #aaa;
+    }
+    
+    
+    &::-webkit-scrollbar-corner {
+      background: #fff;
+    }
+
+
 
     .user-info {
       display: flex;
@@ -26,7 +53,7 @@
       padding: 10px;
       margin: 10px 0;
       border-radius: 5px;
-
+      position: relative;
       .user-details {
         flex: 1;
 
@@ -40,8 +67,12 @@
         color: #fff;
         border: none;
         padding: 5px 10px;
-        border-radius: 5px;
+        border-radius: 20px;
         cursor: pointer;
+        width: 130px;
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
 
         &:hover {
           background-color: #cc0000;
@@ -53,8 +84,7 @@
 
 .wrapper {
   display: flex;
-  flex-direction: column; /* Display the wrapper in a column on smaller screens */
-  //width: 100%; /* Take full width on smaller screens */
+  flex-direction: column; 
 }
 
 .addAdmin {
@@ -69,7 +99,7 @@
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  width: 100%; /* Take full width on smaller screens */
+  width: 90%;
   margin-top: 50px;
 
   h2 {

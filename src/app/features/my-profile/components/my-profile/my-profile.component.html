@@ -42,7 +42,7 @@
     <button (click)="cancelRemove()">Cancel</button>
 </div>
 
-<form [formGroup]="updateForm" class="update-form" *ngIf="isEditing">
+<form [formGroup]="updateForm" class="update-form" id="fup" *ngIf="isEditing">
     <h2>Edit User</h2>
     <label>Email:</label>
     <input formControlName="email" type="email">
@@ -54,4 +54,4 @@
     <input formControlName="nickname">
     <input formControlName="id" type="hidden">
     <button type="submit" [disabled]="!updateForm.valid" (click)="onUpdate()">Update</button>
-  </form>
+</form>
